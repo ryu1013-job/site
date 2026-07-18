@@ -179,7 +179,7 @@ export function Log() {
             </div>
             <div className="flex items-center gap-1">
               <p className="font-serif">{item.title}</p>
-              <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight className="size-4 flex-shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </div>
             {'subTitle' in item && item.subTitle ? (
               <p className="text-foreground/60 font-serif text-xs">{item.subTitle}</p>
