@@ -15,9 +15,9 @@ export function ProfileHero() {
       <div className="grid w-full grid-cols-1 items-center gap-2 sm:grid-cols-[1fr_1fr] sm:items-start sm:gap-0 sm:pr-14">
         <SlideAvatar index={index} src={slide.image} />
         <div className="flex min-w-0 flex-col gap-2 text-center sm:pl-2 sm:text-left">
-          <TextAnimate animation="blurIn" as="h1" className="text-5xl">
+          <h1 className="text-5xl">
             ryu
-          </TextAnimate>
+          </h1>
           <SlideLink index={index} slide={slide} />
         </div>
       </div>
