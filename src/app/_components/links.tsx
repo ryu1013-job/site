@@ -27,17 +27,17 @@ const NAV_ITEMS: {
   },
   {
     href: '/background',
-    label: 'Background',
+    label: 'History',
     icon: SaveIcon,
-    hoverColor: 'group-hover:text-violet-500',
-    activeColor: 'text-violet-500',
+    hoverColor: 'group-hover:text-[#FFD91D]',
+    activeColor: 'text-[#FFD91D]',
   },
   {
     href: '/blog',
     label: 'Blog',
     icon: BookIcon,
-    hoverColor: 'group-hover:text-amber-500',
-    activeColor: 'text-amber-500',
+    hoverColor: 'group-hover:text-[#A33774]',
+    activeColor: 'text-[#A33774]',
   },
 ];
 
@@ -83,9 +83,9 @@ export function Links() {
   const pathname = usePathname();
 
   return (
-    <div className="sticky top-0 z-10 w-full">
+    <div className="sticky top-0 z-10 w-full backdrop-blur-sm">
       <ViewTransition name="site-nav" default="none" share="morph">
-        <nav className="mx-auto flex w-full max-w-2xl justify-center divide-x divide-border overflow-hidden rounded bg-background/50 py-2 text-sm backdrop-blur-sm">
+        <nav className="mx-auto flex w-full max-w-2xl justify-center divide-x divide-border overflow-hidden  py-2 text-sm ">
           {NAV_ITEMS.map((item) => (
             <NavLink
               key={item.href}

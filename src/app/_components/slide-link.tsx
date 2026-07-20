@@ -18,7 +18,7 @@ export function SlideLink({ index, slide }: SlideLinkProps) {
       href={slide.href}
       target={external ? '_blank' : undefined}
       rel={external ? 'noopener noreferrer' : undefined}
-      className="group flex flex-col gap-2"
+      className="group flex flex-col gap-3"
     >
       <div className="text grid min-w-0 font-serif tracking-wide">
         <BlurCrossfade itemKey={index} as="p" className="col-start-1 row-start-1">

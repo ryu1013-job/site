@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Noto_Serif_JP } from 'next/font/google';
 import localFont from 'next/font/local';
+import { Analytics } from '@vercel/analytics/next';
 import { cn } from '~/lib/utils';
 import './globals.css';
 
@@ -33,7 +34,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" className={cn(goudy.variable, notoSerifJp.variable, geist.variable)}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

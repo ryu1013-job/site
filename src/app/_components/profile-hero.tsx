@@ -11,10 +11,10 @@ export function ProfileHero() {
   const slide = SLIDES[index];
 
   return (
-    <section className="mt-[calc(100vh/4)] w-full">
-      <div className="grid w-full grid-cols-1 items-center gap-2 sm:grid-cols-[1fr_1fr] sm:items-start sm:gap-0 sm:pr-14">
+    <section className="mt-[calc(100vh/6)] sm:mt-[calc(100vh/4)] w-full">
+      <div className="grid w-full grid-cols-1 items-center gap-4 sm:grid-cols-[1fr_1fr] sm:items-start sm:gap-0 sm:pr-14">
         <SlideAvatar index={index} src={slide.image} />
-        <div className="flex min-w-0 flex-col gap-2 text-center sm:pl-2 sm:text-left">
+        <div className="flex min-w-0 flex-col gap-4 text-center sm:pl-2 sm:text-left">
           <h1 className="text-5xl">
             ryu
           </h1>

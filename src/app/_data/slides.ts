@@ -7,7 +7,7 @@ export const SLIDES = [
   },
   {
     image: '/icon-2.webp',
-    label: 'Background',
+    label: 'History',
     subtitle: '幸せを届ける仕事をしています',
     href: '/background',
   },
