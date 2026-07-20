@@ -9,7 +9,7 @@ const AboutPage = () => {
     return (
         <>
             <Links />
-            <div className="mx-auto flex w-full max-w-2xl flex-col gap-16 py-16">
+            <div className="mx-auto flex w-full max-w-2xl flex-col gap-16 py-16 px-4 sm:px-0">
                 <header className="flex flex-col gap-5">
                     <ViewTransition name="profile-avatar" default="none" share="morph">
                         <Link href="/" className="relative mb-1 size-14 overflow-hidden rounded-[50%] [corner-shape:squircle]">
