@@ -148,6 +148,14 @@ export const EXPERIENCES: Experience[] = [
     ],
   },
   {
+    period: '2026/07 - now',
+    role: 'Software Engineer',
+    active: true,
+    company: { name: 'miryo.AI株式会社', href: 'https://miryo.ai' },
+    description: <p>AIを活用したWebアプリケーション開発</p>,
+    techs: ['typescript', 'react', 'nextjs'],
+  },
+  {
     period: '2024/12/01 - 2025/02/28',
     role: 'Intern',
     company: { name: '株式会社PR TIMES', href: 'https://prtimes.jp/' },
