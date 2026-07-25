@@ -152,7 +152,7 @@ export const EXPERIENCES: Experience[] = [
     role: 'Software Engineer',
     active: true,
     company: { name: 'miryo.AI株式会社', href: 'https://miryo.ai' },
-    description: <p>AIを活用したWebアプリ開発</p>,
+    description: <p>AIを活用したWebアプリケーション開発</p>,
     techs: ['typescript', 'react', 'nextjs'],
   },
   {
