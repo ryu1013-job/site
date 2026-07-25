@@ -95,14 +95,6 @@ export type Experience = {
 
 export const EXPERIENCES: Experience[] = [
   {
-    period: '2026/07 - now',
-    role: 'Software Engineer',
-    active: true,
-    company: { name: 'miryo.AI', href: 'https://miryo.ai' },
-    description: <p>AIを活用したWebアプリ開発</p>,
-    techs: ['typescript', 'react', 'nextjs'],
-  },
-  {
     period: '2025/03/01 - now',
     role: 'Product Enginner',
     active: true,
@@ -154,6 +146,14 @@ export const EXPERIENCES: Experience[] = [
       'devin',
       'figma',
     ],
+  },
+  {
+    period: '2026/07 - now',
+    role: 'Software Engineer',
+    active: true,
+    company: { name: 'miryo.AI株式会社', href: 'https://miryo.ai' },
+    description: <p>AIを活用したWebアプリ開発</p>,
+    techs: ['typescript', 'react', 'nextjs'],
   },
   {
     period: '2024/12/01 - 2025/02/28',
