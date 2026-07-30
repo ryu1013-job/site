@@ -1,7 +1,5 @@
 import type { ComponentType, ReactNode } from 'react';
-import Image from 'next/image';
 import { Circle } from 'lucide-react';
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '~/components/ui/hover-card';
 import { Typescript } from '~/components/ui/svgs/typescript';
 import { ReactLight } from '~/components/ui/svgs/reactLight';
 import { NextjsIconDark } from '~/components/ui/svgs/nextjsIconDark';
@@ -104,22 +102,14 @@ export const EXPERIENCES: Experience[] = [
         <p>1年ほどインターンとして勤務し。その後、正社員として新卒入社。</p>
         <div>
           <span>インターン時は、</span>
-          <HoverCard>
-            <HoverCardTrigger delay={0} className="decoration-dotted underline-offset-2 underline">
-              長期アルバイト採用サポートプランの開発
-            </HoverCardTrigger>
-            <HoverCardContent>
-              <Image src="/long.png" alt="" width={500} height={400} />
-              <a
-                className="text-xs text-foreground/60 underline"
-                href="https://contents.xj-storage.jp/xcontents/AS05113/64c9937c/af40/4b64/a5d8/65f090795fe6/140120260611568101.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                株式会社タイミー FY26/4期 通期決算説明資料
-              </a>
-            </HoverCardContent>
-          </HoverCard>
+          <a
+            href="https://prtimes.jp/main/html/rd/p/000000467.000036375.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline-dotted"
+          >
+            長期アルバイト採用サポートプランの開発
+          </a>
           <span>に携わる。その後、介護領域のプロダクト開発に従事。</span>
         </div>
         <p>
@@ -159,7 +149,7 @@ export const EXPERIENCES: Experience[] = [
     period: '2024/12/01 - 2025/02/28',
     role: 'Intern',
     company: { name: '株式会社PR TIMES', href: 'https://prtimes.jp/' },
-    description: <a href="https://developers.prtimes.com/2025/02/27/prtimes_intern" target="_blank" rel="noopener noreferrer" className="hover:underline">フルタイムのインターンとしてWebフロントの開発に携わる。</a>,
+    description: <a href="https://developers.prtimes.com/2025/02/27/prtimes_intern" target="_blank" rel="noopener noreferrer" className="underline-dotted">フルタイムのインターンとしてWebフロントの開発に携わる。</a>,
     techs: ['typescript', 'react', 'vite', 'vitest', 'php'],
   },
   {
@@ -188,7 +178,7 @@ export const EXPERIENCES: Experience[] = [
         <p>プログラミングやデザインなど開発の基礎を学ぶ。</p>
         <a
           href="https://www.microsoft.com/ja-jp/microsoft-cloud/blog/microsoft-in-business/2024/04/05/case-study-utilization-of-azure-openai-service-by-students/"
-          className="hover:underline"
+          className="underline-dotted"
           target="_blank"
           rel="noopener noreferrer"
         >
