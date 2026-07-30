@@ -36,7 +36,7 @@ const BackgroundPage = () => {
                 <StaggerReveal  delay={1}>
                     <StaggerItem className="flex flex-col items-center gap-8 py-6 font-sans">
                         <Socials />
-                        <Link href="/" className="text-sm underline hover:opacity-70">
+                        <Link href="/" className="text-sm underline decoration-dotted underline-offset-2 hover:opacity-70">
                             Back to Home
                         </Link>
                     </StaggerItem>

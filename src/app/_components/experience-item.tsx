@@ -32,7 +32,12 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
         )}
         <span className="text-foreground/50">{role}</span>
       </div>
-      <a href={company.href} className="hover:underline" target="_blank" rel="noopener noreferrer">
+      <a
+        href={company.href}
+        className="underline decoration-dotted underline-offset-2"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         {company.name}
       </a>
       <div className="text-xs/5 text-foreground/90">{description}</div>
