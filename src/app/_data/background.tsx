@@ -106,7 +106,7 @@ export const EXPERIENCES: Experience[] = [
             href="https://prtimes.jp/main/html/rd/p/000000467.000036375.html"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:underline"
+            className="underline underline-offset-2"
           >
             長期アルバイト採用サポートプランの開発
           </a>
