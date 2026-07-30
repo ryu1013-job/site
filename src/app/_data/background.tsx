@@ -103,7 +103,7 @@ export const EXPERIENCES: Experience[] = [
         <div>
           <span>インターン時は、</span>
           <a
-            href="https://prtimes.jp/main/html/rd/p/000000467.000036375.html"
+            href="https://corp.timee.co.jp/news/detail-6979/"
             target="_blank"
             rel="noopener noreferrer"
             className="underline-dotted"
