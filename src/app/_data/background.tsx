@@ -106,7 +106,7 @@ export const EXPERIENCES: Experience[] = [
             href="https://prtimes.jp/main/html/rd/p/000000467.000036375.html"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline decoration-dotted underline-offset-2"
+            className="underline-dotted"
           >
             長期アルバイト採用サポートプランの開発
           </a>
@@ -149,7 +149,7 @@ export const EXPERIENCES: Experience[] = [
     period: '2024/12/01 - 2025/02/28',
     role: 'Intern',
     company: { name: '株式会社PR TIMES', href: 'https://prtimes.jp/' },
-    description: <a href="https://developers.prtimes.com/2025/02/27/prtimes_intern" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted underline-offset-2">フルタイムのインターンとしてWebフロントの開発に携わる。</a>,
+    description: <a href="https://developers.prtimes.com/2025/02/27/prtimes_intern" target="_blank" rel="noopener noreferrer" className="underline-dotted">フルタイムのインターンとしてWebフロントの開発に携わる。</a>,
     techs: ['typescript', 'react', 'vite', 'vitest', 'php'],
   },
   {
@@ -178,7 +178,7 @@ export const EXPERIENCES: Experience[] = [
         <p>プログラミングやデザインなど開発の基礎を学ぶ。</p>
         <a
           href="https://www.microsoft.com/ja-jp/microsoft-cloud/blog/microsoft-in-business/2024/04/05/case-study-utilization-of-azure-openai-service-by-students/"
-          className="underline decoration-dotted underline-offset-2"
+          className="underline-dotted"
           target="_blank"
           rel="noopener noreferrer"
         >

@@ -107,6 +107,15 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+@utility underline-dotted {
+  text-decoration: none;
+  background-image: radial-gradient(circle, currentColor 0.7px, transparent 0.75px);
+  background-position: 0 calc(100% - 1px);
+  background-size: 6px 2px;
+  background-repeat: repeat-x;
+  padding-bottom: 2px;
+}
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
