@@ -110,10 +110,10 @@
 @utility underline-dotted {
   text-decoration: none;
   background-image: radial-gradient(circle, currentColor 0.7px, transparent 0.75px);
-  background-position: 0 calc(100% - 1px);
-  background-size: 6px 2px;
+  background-position: 0 100%;
+  background-size: 6px 1.5px;
   background-repeat: repeat-x;
-  padding-bottom: 2px;
+  padding-bottom: 1px;
 }
 
 :root {

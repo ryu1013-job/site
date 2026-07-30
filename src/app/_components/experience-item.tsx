@@ -34,7 +34,7 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
       </div>
       <a
         href={company.href}
-        className="underline-dotted"
+        className="underline-dotted w-fit"
         target="_blank"
         rel="noopener noreferrer"
       >
