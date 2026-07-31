@@ -12,3 +12,6 @@
 **コンセプト:** 介護版Ubie。問診で次の一手とサービス種別まで案内する。  
 **名前:** 介護のげんかん  
 **形態:** まずモバイルWeb（インストール不要）
+
+**Canvas:** `.cursor/canvases/kaigo-no-genkan.canvas.tsx`  
+Cursor の Canvas（概要 / Lean Canvas / PRD / LP / 検証計画をタブ切替）
