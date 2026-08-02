@@ -159,7 +159,7 @@ function EngineSection() {
             <Stack gap={6}>
               <Text>L1 = 1件（30秒で1手の約束を守る）</Text>
               <Text>L2 / L3 = 3件</Text>
-              <Text>並べ替えは (priority, ruleIndex) の安定ソート</Text>
+              <Text>並べ替えは (priority, alertLinked, ruleIndex) の安定ソート</Text>
               <Text tone="secondary" size="small">
                 空なら fallback を必ず1件立てる
               </Text>
@@ -214,6 +214,60 @@ function EngineSection() {
         </CardBody>
       </Card>
 
+      <Callout tone="warning" title="フローチャート化で見つかった不整合">
+        図に起こすと、決定表がゴールデンケースを再現しない箇所が3つ出た。表のままでは見えなかった。
+      </Callout>
+
+      <Card>
+        <CardHeader>3つの修正</CardHeader>
+        <CardBody>
+          <Table
+            headers={['症状', '原因', '修正']}
+            rows={[
+              [
+                '入院中にA03とA01が両方出る',
+                '抑制ルールが無かった',
+                'A03発火時はA01を落とす',
+              ],
+              [
+                '更新時にA05が出ない',
+                'R08 が Stage=S2 限定だった',
+                'R08 に renewal_due を追加',
+              ],
+              [
+                '更新時にA09がA05の後になる',
+                'タイブレークが ruleIndex だけ',
+                'alertLinked をソート鍵に追加',
+              ],
+            ]}
+          />
+          <Spacer />
+          <Text tone="secondary" size="small">
+            更新でも認定調査はある。初回と同じ準備が要る、という前提が表から抜けていた。
+          </Text>
+        </CardBody>
+      </Card>
+
+      <Card>
+        <CardHeader>代表ケースの経路</CardHeader>
+        <CardBody>
+          <Table
+            headers={['ケース', 'Stage', '結果']}
+            rows={[
+              ['A 遠方 × 物忘れ × 未申請', 'S1', 'A01 → A15 → A13'],
+              ['B 退院近い × 緊急 × 電話不可', 'S1', 'A16(A03) → A15 → A11'],
+              ['C 認定あり × 更新間近 × CM有', 'S4 + renewal_due', 'A09 → A05'],
+              ['D 認定あり × CM無 × 段差', 'S3', 'A07 → A08 → A12'],
+              ['E L1のみ × 認定あり', 'S3', 'A18 のみ1件'],
+            ]}
+          />
+          <Spacer />
+          <Text tone="secondary" size="small">
+            E は Stage が S3 でも A07 ではなく A18。ケアマネの有無を聞く前に「ケアマネを選べ」とは言わない。
+          </Text>
+        </CardBody>
+      </Card>
+
       <Card>
         <CardHeader>テスト戦略</CardHeader>
         <CardBody>
@@ -247,7 +301,7 @@ function EngineSection() {
       </Card>
 
       <Text size="small" tone="tertiary">
-        詳細: docs/kaigo-no-genkan/ENGINE.md
+        詳細: docs/kaigo-no-genkan/ENGINE.md ／ フローチャート: docs/kaigo-no-genkan/FLOW.md
       </Text>
       <Spacer />
     </Stack>
