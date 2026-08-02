@@ -6,6 +6,7 @@
 |---|---|
 | [PRD.md](./PRD.md) | 要件・スコープ・指標 |
 | [IMPLEMENTATION.md](./IMPLEMENTATION.md) | 実装方針・スタック・フェーズ |
+| [ENGINE.md](./ENGINE.md) | ルールエンジン詳細設計（決定表・型・テスト） |
 | [LP.md](./LP.md) | ランディングページ文案 |
 | [LEAN_CANVAS.md](./LEAN_CANVAS.md) | Lean Canvas 1枚 |
 | [VALIDATION_PLAN.md](./VALIDATION_PLAN.md) | 仮説検証計画 |
