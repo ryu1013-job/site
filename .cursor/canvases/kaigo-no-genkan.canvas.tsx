@@ -18,7 +18,14 @@ import {
   useCanvasState,
 } from 'cursor/canvas';
 
-type Tab = 'overview' | 'sharpen' | 'lean' | 'prd' | 'lp' | 'validation';
+type Tab =
+  | 'overview'
+  | 'sharpen'
+  | 'lean'
+  | 'prd'
+  | 'lp'
+  | 'validation'
+  | 'implementation';
 
 const TABS: { id: Tab; label: string }[] = [
   { id: 'overview', label: '概要' },
@@ -27,6 +34,7 @@ const TABS: { id: Tab; label: string }[] = [
   { id: 'prd', label: 'PRD' },
   { id: 'lp', label: 'LP文' },
   { id: 'validation', label: '検証計画' },
+  { id: 'implementation', label: '実装方針' },
 ];
 
 export default function KaigoNoGenkanCanvas() {
@@ -70,6 +78,128 @@ export default function KaigoNoGenkanCanvas() {
       {tab === 'prd' && <PrdSection />}
       {tab === 'lp' && <LpSection />}
       {tab === 'validation' && <ValidationSection />}
+      {tab === 'implementation' && <ImplementationSection />}
+    </Stack>
+  );
+}
+
+function ImplementationSection() {
+  return (
+    <Stack gap={16}>
+      <H2>実装方針</H2>
+
+      <Callout tone="info" title="設計の芯">
+        ルールエンジンを純粋関数として隔離する／アカウントを作らせない／自治体データはウェッジの商圏だけで始める
+      </Callout>
+
+      <Card>
+        <CardHeader>スタック</CardHeader>
+        <CardBody>
+          <Table
+            headers={['領域', '選定', '備考']}
+            rows={[
+              ['フレームワーク', 'Next.js（App Router）', 'Server Actions で問診送信'],
+              ['ホスティング', 'Vercel', 'Cron / Preview が揃う'],
+              ['DB', 'Postgres（Neon / Supabase）', '自治体データと期限バッチ向き'],
+              ['ORM', 'Drizzle', 'スキーマがTSで完結'],
+              ['メール', 'Resend', '期限通知・マジックリンク'],
+              ['テスト', 'Vitest / Playwright', 'エンジンのテーブル駆動が主戦場'],
+              ['監視・計測', 'Sentry / GA4 + 自前イベント', 'ファネルは自前で正確に'],
+            ]}
+          />
+        </CardBody>
+      </Card>
+
+      <Grid columns={2} gap={12}>
+        <Card>
+          <CardHeader>ルールエンジン</CardHeader>
+          <CardBody>
+            <Stack gap={6}>
+              <Text>packages/engine に隔離（依存なし・副作用なし）</Text>
+              <Text>決定表を配列＋述語関数で持つ</Text>
+              <Text>Stage先勝ち → Action全評価 → 抑制 → 上位3件</Text>
+              <Text>trace に発火IDを積んで検証可能に</Text>
+              <Text tone="secondary" size="small">
+                不変条件をプロパティテストで守る
+              </Text>
+            </Stack>
+          </CardBody>
+        </Card>
+        <Card>
+          <CardHeader>アカウントレス設計</CardHeader>
+          <CardBody>
+            <Stack gap={6}>
+              <Text>L1・L2: 匿名（署名付きcookie）</Text>
+              <Text>L3（シート生成）で初めてメール → マジックリンク</Text>
+              <Text>パスワードは作らない</Text>
+              <Text>共有は view / edit を分けたトークンURL</Text>
+            </Stack>
+          </CardBody>
+        </Card>
+      </Grid>
+
+      <Card>
+        <CardHeader>LLM の使いどころ</CardHeader>
+        <CardBody>
+          <Stack gap={6}>
+            <Text weight="semibold">制度判断には一切使わない。</Text>
+            <Text>• 自由記述 → シート用の整形（失敗したら原文）</Text>
+            <Text>• 電話台本の言い回し（失敗したら静的テンプレート）</Text>
+            <Text tone="secondary" size="small">
+              どちらもフォールバックが常に成立する設計にする
+            </Text>
+          </Stack>
+        </CardBody>
+      </Card>
+
+      <Card>
+        <CardHeader>フェーズ</CardHeader>
+        <CardBody>
+          <Table
+            headers={['Phase', '中身', '目的']}
+            rows={[
+              ['0 検証', 'L1の3問と即時回答のみ。DBなし', 'H1を潰す'],
+              ['1 v1 Web', '段階問診・エンジン完全版・シート・共有', '中核体験'],
+              ['2 節目', '期限エンジン（Cron+Resend）・再訪フロー', 'リテンション'],
+              ['3 データ/B2B', '厚労省取込自動化・匿名レポート・事業所一覧', '収益'],
+            ]}
+          />
+        </CardBody>
+      </Card>
+
+      <Card>
+        <CardHeader>プライバシー（後付け不可）</CardHeader>
+        <CardBody>
+          <Stack gap={6}>
+            <Text>• 氏名・番地・生年月日はカラムを作らない</Text>
+            <Text>• 収集は市区町村コードまで</Text>
+            <Text>• 共有ページは noindex ＋ 第三者タグなし</Text>
+            <Text>• ログに回答本文を落とさない（Sentry scrubbing）</Text>
+            <Text>• シート完全削除の導線をプロダクト内に</Text>
+          </Stack>
+        </CardBody>
+      </Card>
+
+      <Card>
+        <CardHeader>落とし穴</CardHeader>
+        <CardBody>
+          <Table
+            headers={['罠', '回避']}
+            rows={[
+              ['ルールをDB/CMS化したくなる', 'コードで持ち、PRでレビュー'],
+              ['問診の分岐を作り込みすぎる', 'L1は3問固定、分岐はL2以降'],
+              ['全国データを揃えてから出す', '商圏だけ。カバレッジは開示'],
+              ['LLMに制度を答えさせる', '生成は装飾のみ'],
+              ['計測を後回しにする', 'イベント設計を実装前に確定'],
+            ]}
+          />
+        </CardBody>
+      </Card>
+
+      <Text size="small" tone="tertiary">
+        詳細: docs/kaigo-no-genkan/IMPLEMENTATION.md
+      </Text>
+      <Spacer />
     </Stack>
   );
 }
@@ -154,6 +284,7 @@ function OverviewSection() {
             headers={['File', '内容']}
             rows={[
               ['docs/kaigo-no-genkan/PRD.md', 'v0.2 要件・スコープ・KPI'],
+              ['docs/kaigo-no-genkan/IMPLEMENTATION.md', '実装方針・スタック・フェーズ'],
               ['docs/kaigo-no-genkan/LP.md', 'LP文（汎用＋退院版）'],
               ['docs/kaigo-no-genkan/LEAN_CANVAS.md', 'Lean Canvas 1枚'],
               ['docs/kaigo-no-genkan/VALIDATION_PLAN.md', '検証計画 v0.2'],
