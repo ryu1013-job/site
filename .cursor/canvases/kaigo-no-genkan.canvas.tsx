@@ -25,7 +25,8 @@ type Tab =
   | 'prd'
   | 'lp'
   | 'validation'
-  | 'implementation';
+  | 'implementation'
+  | 'engine';
 
 const TABS: { id: Tab; label: string }[] = [
   { id: 'overview', label: '概要' },
@@ -35,6 +36,7 @@ const TABS: { id: Tab; label: string }[] = [
   { id: 'lp', label: 'LP文' },
   { id: 'validation', label: '検証計画' },
   { id: 'implementation', label: '実装方針' },
+  { id: 'engine', label: 'エンジン' },
 ];
 
 export default function KaigoNoGenkanCanvas() {
@@ -79,6 +81,175 @@ export default function KaigoNoGenkanCanvas() {
       {tab === 'lp' && <LpSection />}
       {tab === 'validation' && <ValidationSection />}
       {tab === 'implementation' && <ImplementationSection />}
+      {tab === 'engine' && <EngineSection />}
+    </Stack>
+  );
+}
+
+function EngineSection() {
+  return (
+    <Stack gap={16}>
+      <H2>ルールエンジン</H2>
+
+      <Callout tone="info" title="最重要の制約">
+        L1（3問）でも必ず結果を返す。全フィールドを optional にし、undefined は「まだ聞いていない」として扱う。
+      </Callout>
+
+      <Card>
+        <CardHeader>パイプライン</CardHeader>
+        <CardBody>
+          <Table
+            headers={['段', '処理']}
+            rows={[
+              ['normalize', '欠損の正規化'],
+              ['deriveContext', '残日数・遠距離・悪化signal'],
+              ['resolveStage', 'Stage 判定（先勝ち・1つ確定）'],
+              ['resolveAlerts', '期限系アラート（Stageと直交）'],
+              ['collectActions', '全ルール評価'],
+              ['suppress', '矛盾・重複の除去'],
+              ['select', '優先度順 → Levelごとの上限で切る'],
+              ['transform', '電話不可 → 翌朝予約に置換'],
+              ['resolveServices / resolveDeadlines', 'サービス種別・期限候補'],
+              ['assertInvariants', 'ガード'],
+            ]}
+          />
+        </CardBody>
+      </Card>
+
+      <Card>
+        <CardHeader>Stage 判定（上から先勝ち）</CardHeader>
+        <CardBody>
+          <Table
+            headers={['ID', '条件', 'Stage']}
+            rows={[
+              ['ST01', 'prepare / 未認定 / 緊急度low / 困りごとなし', 'S0 備え'],
+              ['ST02', '申請中', 'S2 判定待ち'],
+              ['ST03', '認定済 × ケアマネ有 × 悪化signal', 'S5 変化点'],
+              ['ST04', '認定済 × 施設検討', 'S5 変化点'],
+              ['ST05', '認定済 × ケアマネ無/不明', 'S3 体制づくり'],
+              ['ST06', '認定済 × ケアマネ有', 'S4 運用中'],
+              ['ST07', 'fallback', 'S1 げんかん'],
+            ]}
+          />
+        </CardBody>
+      </Card>
+
+      <Callout tone="warning" title="決定表からの変更">
+        更新期限は S6 という Stage ではなく Alert に分離した。「運用中かつ更新が近い」は同時に成立するため。
+        Stage は旅程上の位置、Alert は直交する緊急度。
+      </Callout>
+
+      <Grid columns={2} gap={12}>
+        <Card>
+          <CardHeader>不明値を倒す方向</CardHeader>
+          <CardBody>
+            <Stack gap={6}>
+              <Text weight="semibold">原則: 実行しても害が小さい側へ</Text>
+              <Text>相談窓口への連絡 → 不明なら促す</Text>
+              <Text>申請の代行依頼 → 不明なら促さない</Text>
+              <Text tone="secondary" size="small">
+                (a.contactStatus ?? &apos;not_yet&apos;) !== &apos;done&apos;
+              </Text>
+            </Stack>
+          </CardBody>
+        </Card>
+        <Card>
+          <CardHeader>Action の上限</CardHeader>
+          <CardBody>
+            <Stack gap={6}>
+              <Text>L1 = 1件（30秒で1手の約束を守る）</Text>
+              <Text>L2 / L3 = 3件</Text>
+              <Text>並べ替えは (priority, ruleIndex) の安定ソート</Text>
+              <Text tone="secondary" size="small">
+                空なら fallback を必ず1件立てる
+              </Text>
+            </Stack>
+          </CardBody>
+        </Card>
+      </Grid>
+
+      <Card>
+        <CardHeader>部分回答のための特別なAction</CardHeader>
+        <CardBody>
+          <Stack gap={6}>
+            <Text weight="semibold">A18_CONFIRM_SUPPORT_LINE（L1専用）</Text>
+            <Text>
+              L1で「認定あり」だけ分かっている場合、ケアマネの有無を知らないまま「ケアマネを選ぼう」とは言えない。
+            </Text>
+            <Text tone="secondary">
+              「いま関わっている専門職（いなければ包括）に連絡する」= どちらでも正しい一手。
+            </Text>
+          </Stack>
+        </CardBody>
+      </Card>
+
+      <Card>
+        <CardHeader>サービス種別の出し方</CardHeader>
+        <CardBody>
+          <Table
+            headers={['認定状態', 'mode', '上限', '添える文']}
+            rows={[
+              ['未認定・不明', 'preview', '3', '利用には申請が必要です'],
+              ['申請中', 'preview', '3', '判定後にケアマネと組み立てます'],
+              ['認定済', 'full', '5', '組み合わせはケアプランで調整されます'],
+            ]}
+          />
+        </CardBody>
+      </Card>
+
+      <Card>
+        <CardHeader>不変条件（ガード）</CardHeader>
+        <CardBody>
+          <Stack gap={6}>
+            <Text>• Action は 1件以上、上限以下</Text>
+            <Text>• Stage は必ず1つ確定する</Text>
+            <Text>• disclaimers が常に非空</Text>
+            <Text>• 全 Action に確認先がある</Text>
+            <Text>• 要介護度を断定する文字列を含まない</Text>
+            <Text>• L1 なら必ず1件</Text>
+            <Text tone="secondary" size="small">
+              開発時はthrow、本番はSentry送信＋安全な既定を返す
+            </Text>
+          </Stack>
+        </CardBody>
+      </Card>
+
+      <Card>
+        <CardHeader>テスト戦略</CardHeader>
+        <CardBody>
+          <Stack gap={6}>
+            <Text>• 決定表の各ルールに最低1ケース（テーブル駆動）</Text>
+            <Text>• 代表5ケースをゴールデンで固定（L1のみのケース含む）</Text>
+            <Text>• 不変条件をプロパティテストで守る</Text>
+            <Text tone="secondary" size="small">
+              now を引数に取り、エンジン内で new Date() を呼ばない
+            </Text>
+          </Stack>
+        </CardBody>
+      </Card>
+
+      <Card>
+        <CardHeader>実装順序</CardHeader>
+        <CardBody>
+          <Table
+            headers={['#', '内容', 'Phase']}
+            rows={[
+              ['1', '型・Context・resolveStage ＋ テスト', '0'],
+              ['2', 'Action カタログと R01–R05', '0'],
+              ['3', '抑制・選択・上限・不変条件', '0'],
+              ['4', 'transform（電話可否）', '1'],
+              ['5', 'サービス種別（preview → full）', '1'],
+              ['6', '期限抽出', '2'],
+              ['7', 'ゴールデン＋プロパティテスト', '1'],
+            ]}
+          />
+        </CardBody>
+      </Card>
+
+      <Text size="small" tone="tertiary">
+        詳細: docs/kaigo-no-genkan/ENGINE.md
+      </Text>
+      <Spacer />
     </Stack>
   );
 }
@@ -285,6 +456,7 @@ function OverviewSection() {
             rows={[
               ['docs/kaigo-no-genkan/PRD.md', 'v0.2 要件・スコープ・KPI'],
               ['docs/kaigo-no-genkan/IMPLEMENTATION.md', '実装方針・スタック・フェーズ'],
+              ['docs/kaigo-no-genkan/ENGINE.md', 'ルールエンジン詳細設計'],
               ['docs/kaigo-no-genkan/LP.md', 'LP文（汎用＋退院版）'],
               ['docs/kaigo-no-genkan/LEAN_CANVAS.md', 'Lean Canvas 1枚'],
               ['docs/kaigo-no-genkan/VALIDATION_PLAN.md', '検証計画 v0.2'],
