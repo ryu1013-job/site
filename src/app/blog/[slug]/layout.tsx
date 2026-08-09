@@ -12,9 +12,15 @@ export default function BlogPostLayout({ children }: { children: React.ReactNode
         <StaggerReveal delay={0.6}>
           <StaggerItem className="flex flex-col items-center gap-8 py-6 font-sans">
             <Socials />
-            <Link href="/blog" className="text-sm underline hover:opacity-70">
-              Back to Blog
-            </Link>
+            <p className="flex items-center gap-2 text-sm">
+              <Link href="/" className="underline hover:opacity-70">
+                Home
+              </Link>
+              <span aria-hidden="true">|</span>
+              <Link href="/blog" className="underline hover:opacity-70">
+                Blog
+              </Link>
+            </p>
           </StaggerItem>
         </StaggerReveal>
       </div>
