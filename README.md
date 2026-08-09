@@ -1,20 +1,23 @@
 # site
 
-Personal portfolio ([Next.js](https://nextjs.org)) and Slidev decks on one domain via [Vercel Microfrontends](https://vercel.com/docs/microfrontends).
+Personal portfolio ([Next.js](https://nextjs.org)) and Slidev decks on one domain. Ready for [Vercel Microfrontends](https://vercel.com/docs/microfrontends); until the `slides` project is attached, the portfolio build also publishes decks under `public/slides`.
 
 | App | Path | Vercel project | Root Directory |
 | --- | --- | --- | --- |
 | Portfolio (default) | `/` | `site` | `.` |
-| Slides | `/slides/<slug>/` | `slides` | `slides` |
+| Slides | `/slides/<slug>/` | `slides` (optional for now) | `slides` |
 
 ## Portfolio
 
 ```bash
 bun install
+bun run slides:prepare   # builds decks → public/slides
 bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000) and try `/slides/intro/`.
+
+`bun run build` runs `slides:prepare` automatically (also on Vercel).
 
 ## Slides
 
@@ -30,23 +33,17 @@ bun run build
 
 See [`slides/README.md`](./slides/README.md).
 
-## Microfrontends (local)
+## Microfrontends (optional next step)
 
-`microfrontends.json` routes `/slides` (+ nested paths) to the `slides` project. Portfolio is the default app.
+`microfrontends.json` is ready to route `/slides` to a separate `slides` project.
+
+1. Create Vercel project **slides** (Root Directory `slides`, output `dist`).
+2. Create a Microfrontends group: **site** = default, add **slides**.
+3. Deploy both. Edge routing then serves `/slides/*` from the slides project instead of `public/slides`.
+
+Local proxy while iterating on the portfolio alone:
 
 ```bash
-# terminal 1 — local proxy (http://localhost:3024)
-bun run proxy
-
-# terminal 2 — portfolio (optional: also run a deck with slides:dev)
-bun run dev
+bun run proxy   # :3024
+bun run dev     # :3000
 ```
-
-Requests to `/slides/*` fall back to production when the slides app is not running locally.
-
-## Deploy on Vercel
-
-1. Keep the existing **site** project pointed at the repo root.
-2. Create a second project **slides** from the same repo with Root Directory `slides` (Other / static output `dist`).
-3. Create a Microfrontends group, set **site** as the default app, add **slides**.
-4. Deploy both. After `microfrontends.json` is live on **site**, `https://www.ryu.engineer/slides/intro/` is served by the slides project.

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --port 3000",
-    "build": "next build",
+    "build": "bun run slides:prepare && next build",
     "start": "next start",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
@@ -13,7 +13,8 @@
     "proxy": "microfrontends proxy microfrontends.json --local-apps site",
     "slides:dev": "bun --cwd slides run dev",
     "slides:build": "bun --cwd slides run build",
-    "slides:create": "bun --cwd slides run create"
+    "slides:create": "bun --cwd slides run create",
+    "slides:prepare": "bun scripts/prepare-slides.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",

@@ -47,3 +47,6 @@ skills-lock.json
 # slides microfrontend (has its own node_modules / dist)
 /slides/node_modules
 /slides/dist
+
+# generated into the portfolio for same-deploy serving
+/public/slides
