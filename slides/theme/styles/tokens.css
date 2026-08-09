@@ -1,83 +1,12 @@
-/* Public token subset aligned with vercel.com/geist/vercel-brand.css
-   and vercel.com/design.md. Fonts match the portfolio site. */
-
-@font-face {
-  font-family: "Goudy Old Style";
-  src: url("../fonts/goudy-old-style-regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   color-scheme: light;
-  /* Site: body = Goudy + Noto Serif JP; UI = Geist; code = Geist Mono */
-  --vbg-font-serif: "Goudy Old Style", "Noto Serif JP", serif;
-  --vbg-font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --vbg-font-mono: "Geist Mono", "SFMono-Regular", Consolas, monospace;
-
-  --vbg-background-100: light-dark(oklch(1 0 0), oklch(0 0 0));
-  --vbg-background-200: light-dark(oklch(0.984 0 0), oklch(0.027 0 0));
-  --vbg-gray-100: light-dark(oklch(0.961 0 0), oklch(0.218 0 0));
-  --vbg-gray-900: light-dark(oklch(0.42 0 0), oklch(0.706 0 0));
-  --vbg-gray-1000: light-dark(oklch(0.205 0 0), oklch(0.946 0 0));
-  --vbg-gray-alpha-300: light-dark(oklch(0 0 0 / 0.1), oklch(1 0 0 / 0.13));
-  --vbg-gray-alpha-400: light-dark(oklch(0 0 0 / 0.08), oklch(1 0 0 / 0.14));
-  --vbg-gray-alpha-700: light-dark(oklch(0 0 0 / 0.44), oklch(1 0 0 / 0.54));
-
-  --vbg-blue-700: light-dark(oklch(57.61% 0.2508 258.23), oklch(57.61% 0.2321 258.23));
-  --vbg-green-900: light-dark(oklch(51.75% 0.1453 147.65), oklch(73.1% 0.2158 148.29));
-  --vbg-amber-900: light-dark(oklch(52.79% 0.1496 54.65), oklch(77.21% 0.1991 64.28));
-  --vbg-red-700: light-dark(oklch(62.56% 0.2524 23.03), oklch(62.56% 0.2234 23.03));
-
-  --vbg-surface-primary: var(--vbg-background-100);
-  --vbg-surface-secondary: var(--vbg-background-200);
-  --vbg-surface-contrast: oklch(0.205 0 0);
-  --vbg-text-primary: var(--vbg-gray-1000);
-  --vbg-text-secondary: var(--vbg-gray-900);
-  --vbg-border-subtle: var(--vbg-gray-alpha-300);
-  --vbg-border-default: var(--vbg-gray-alpha-400);
-  --vbg-border-strong: var(--vbg-gray-alpha-700);
-  --vbg-color-info: var(--vbg-blue-700);
-  --vbg-color-success: var(--vbg-green-900);
-  --vbg-color-warning: var(--vbg-amber-900);
-  --vbg-color-error: var(--vbg-red-700);
-
-  --vbg-space-1: 4px;
-  --vbg-space-2: 8px;
-  --vbg-space-3: 12px;
-  --vbg-space-4: 16px;
-  --vbg-space-5: 20px;
-  --vbg-space-6: 24px;
-  --vbg-space-8: 32px;
-  --vbg-space-10: 40px;
-  --vbg-space-12: 48px;
-  --vbg-space-16: 64px;
-  --vbg-radius-small: 6px;
-  --vbg-radius: 8px;
-
-  --vbg-type-display: 3rem;
-  --vbg-type-page-title: 2.5rem;
-  --vbg-type-title: 2rem;
-  --vbg-type-section: 1.5rem;
-  --vbg-type-subsection: 1.25rem;
-  --vbg-type-lede: 1.125rem;
-  --vbg-type-body: 1.0625rem;
-  --vbg-type-compact: 0.875rem;
-  --vbg-type-label: 0.8125rem;
-  --vbg-type-metadata: 0.8125rem;
-
-  --vbg-weight-regular: 400;
-  --vbg-weight-heading: 450;
-  --vbg-weight-medium: 500;
-  --vbg-weight-semibold: 600;
-
-  --vbg-leading-body: 1.55;
-  --vbg-leading-compact: 1.4;
-  --vbg-leading-display: 1.12;
-  --vbg-leading-title: 1.18;
-  --vbg-leading-section: 1.25;
-  --vbg-leading-lede: 1.45;
+  --bg: light-dark(oklch(1 0 0), oklch(0 0 0));
+  --fg: light-dark(oklch(0.205 0 0), oklch(0.946 0 0));
+  --muted: light-dark(oklch(0.42 0 0), oklch(0.706 0 0));
+  --line: light-dark(oklch(0 0 0 / 0.1), oklch(1 0 0 / 0.13));
+  --font-serif: "Noto Serif JP", serif;
+  --font-sans: "Noto Sans JP", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
 }
 
 html.dark {

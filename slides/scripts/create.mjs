@@ -25,34 +25,22 @@ try {
 const template = `---
 theme: ../theme
 title: ${slug}
-info: |
-  Add a short description.
 ---
 
 ---
 layout: cover
 ---
 
-<Kicker>${slug}</Kicker>
-
 # ${slug}
 
-<Lead>One short supporting sentence.</Lead>
-
-<Tag>draft</Tag>
+One short line.
 
 ---
 
-# Contents
+# Points
 
-- Point one
-- Point two
-
-<Note type="tip">
-
-Use tags like Tag, Grid, Item, Steps for structure. See intro deck.
-
-</Note>
+- One
+- Two
 
 ---
 layout: end

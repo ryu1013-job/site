@@ -1,6 +1,6 @@
 # Slides microfrontend
 
-Multiple [Slidev](https://sli.dev) decks under `/slides/<slug>/`, sharing one local theme (`theme/`).
+Multiple [Slidev](https://sli.dev) decks under `/slides/<slug>/`, sharing one minimal theme (`theme/`).
 
 ## Add a deck
 
@@ -10,25 +10,19 @@ bun run create -- my-talk
 
 Creates `slides/my-talk/slides.md` with `theme: ../theme`. After deploy: `/slides/my-talk/`.
 
-## Shared style
+## Style
 
-All decks use `slides/theme`, with portfolio fonts (Goudy + Noto Serif JP body, Geist UI) and [Vercel design.md](https://vercel.com/design.md) restraint.
+Plain Markdown only. No custom Vue components.
 
-Write normal Markdown, or these tags:
-
-| Tag | Role |
+| Element | Font |
 | --- | --- |
-| `<Kicker>` | quiet metadata line (sentence case) |
-| `<Lead>` | supporting sentence under a title |
-| `<Tag>` | mono keyword, not a pill |
-| `<Note type="tip\|warn\|note">` | callout with left rule |
-| `<Grid cols="2\|3">` + `<Item title="...">` | peer columns |
-| `<Steps>` | numbered steps |
-| `<Split>` | two columns |
+| `h*`, `p` | Noto Serif JP |
+| `span`, `li` | Noto Sans JP |
+| `code` | Geist Mono |
 
 Layouts (frontmatter): `cover` · `section` · `default` · `center` · `end`
 
-Change look once in `theme/styles/` and every deck updates.
+Edit `theme/styles/` to change every deck at once.
 
 ## Local commands
 
