@@ -1,9 +1,6 @@
 ---
 theme: ../theme
 title: Shipping Notes
----
-
----
 layout: cover
 ---
 

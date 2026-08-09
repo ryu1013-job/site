@@ -1,9 +1,6 @@
 ---
 theme: ../theme
 title: Product Kickoff
----
-
----
 layout: cover
 ---
 

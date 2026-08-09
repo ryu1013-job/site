@@ -1,9 +1,6 @@
 ---
 theme: ../theme
 title: Intro
----
-
----
 layout: cover
 ---
 

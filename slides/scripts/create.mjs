@@ -25,9 +25,6 @@ try {
 const template = `---
 theme: ../theme
 title: ${slug}
----
-
----
 layout: cover
 ---
 

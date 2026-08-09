@@ -1,9 +1,6 @@
 ---
 theme: ../theme
 title: Design Tokens Talk
----
-
----
 layout: cover
 ---
 
