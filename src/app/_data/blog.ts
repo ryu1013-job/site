@@ -1,7 +1,7 @@
 export const BLOG_ITEMS = [
   {
     date: '2026/10/12',
-    category: ['talk', 'tech', 'design'],
+    category: ['talk'],
     title: '気持ちぃ〜角丸 Squircles',
     subTitle: 'フロントエンドカンファレンス関西で登壇',
     href: 'https://fortee.jp/fec-kansai-2026/proposal/91219d93-833a-4a09-b5c4-34c5cb43a194',
@@ -14,21 +14,21 @@ export const BLOG_ITEMS = [
   },
   {
     date: '2026/06/15',
-    category: ['talk', 'product', 'work'],
+    category: ['talk'],
     title: 'スタートアップ4社と考える、ドメイン理解の方法論',
     subTitle: '',
     href: 'https://resilire.connpass.com/event/391602',
   },
   {
     date: '2026/06/06',
-    category: ['talk', 'design', 'tech'],
+    category: ['talk'],
     title: '「おすすめ」 はなぜ信用されないのか　〜 信頼を築くUI/UX設計 〜',
     subTitle: 'フロントエンド・PHPカンファレンス北海道2026で登壇',
     href: 'https://fortee.jp/frontend-phpcon-do-2026/proposal/6cd24c56-8f89-4df0-a4f6-83f8be3ec255',
   },
   {
     date: '2026/03/26',
-    category: ['talk', 'product'],
+    category: ['talk'],
     title: '機能を売るな、対価を届けろ',
     subTitle: '新卒N年目のLT交流会！好きな技術を語ろう！',
     href: 'https://fresh-engineers.connpass.com/event/386529',
