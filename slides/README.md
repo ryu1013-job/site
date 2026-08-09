@@ -1,6 +1,8 @@
-# Slides
+# Slides microfrontend
 
-[Slidev](https://sli.dev) decks under `/slides/<slug>/`, with one shared theme.
+[Slidev](https://sli.dev) decks for the `slides` Vercel project (Root Directory `slides`).
+
+Routed at `/slides/<slug>/` via the site's `microfrontends.json`.
 
 ## Add a deck
 
@@ -28,3 +30,13 @@ bun run dev -- intro
 bun run build
 bun run create -- <slug>
 ```
+
+## Vercel
+
+| Setting | Value |
+| --- | --- |
+| Project name | `slides` |
+| Root Directory | `slides` |
+| Install | `bun install` |
+| Build | `bun run build` |
+| Output | `dist` |

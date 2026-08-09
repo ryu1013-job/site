@@ -1,11 +1,13 @@
 import type { NextConfig } from 'next';
+import { withMicrofrontends } from '@vercel/microfrontends/next/config';
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
   experimental: {
     viewTransition: true,
   },
-  // Slidev SPAs under public/slides — existing assets win over rewrites.
+  // Fallback when the slides microfrontend is not attached yet.
+  // Once MFE routes /slides/* to the slides project, these are unused.
   async rewrites() {
     return [
       { source: '/slides', destination: '/slides/index.html' },
@@ -16,4 +18,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withMicrofrontends(nextConfig);
