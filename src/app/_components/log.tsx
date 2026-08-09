@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Marker, MarkerContent } from '~/components/ui/marker';
 import { isExternalHref } from '~/lib/href';
@@ -30,7 +30,7 @@ const itemVariants = {
 const ITEM_CLASS_NAME =
   'group flex flex-col gap-2 transition-opacity duration-100 hover:opacity-50';
 
-function LogItemBody({ item, external }: { item: (typeof LOG_ITEMS)[number]; external: boolean }) {
+function LogItemBody({ item }: { item: (typeof LOG_ITEMS)[number] }) {
   return (
     <>
       <div className="flex items-center gap-2 font-sans text-xs">
@@ -39,11 +39,7 @@ function LogItemBody({ item, external }: { item: (typeof LOG_ITEMS)[number]; ext
       </div>
       <div className="flex items-center gap-1">
         <p className="font-serif">{item.title}</p>
-        {external ? (
-          <ArrowUpRight className="size-4 flex-shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        ) : (
-          <ArrowRight className="size-4 flex-shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
-        )}
+        <ArrowUpRight className="size-4 flex-shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
       </div>
       {'subTitle' in item && item.subTitle ? (
         <p className="text-foreground/60 font-serif text-xs">{item.subTitle}</p>
@@ -78,7 +74,7 @@ export function Log() {
               variants={itemVariants}
               className={ITEM_CLASS_NAME}
             >
-              <LogItemBody item={item} external />
+              <LogItemBody item={item} />
             </motion.a>
           ) : (
             <MotionLink
@@ -87,7 +83,7 @@ export function Log() {
               variants={itemVariants}
               className={ITEM_CLASS_NAME}
             >
-              <LogItemBody item={item} external={false} />
+              <LogItemBody item={item} />
             </MotionLink>
           );
         })}

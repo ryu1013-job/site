@@ -1,28 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ViewTransition } from 'react';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { StaggerItem, StaggerReveal } from '~/components/motion/stagger-reveal';
 import { Links } from '../_components/links';
 import { BLOG_ITEMS } from '../_data/blog';
 import { Socials } from '../_components/socials';
-
-function BlogItemMeta({
-  date,
-  category,
-  muted,
-}: {
-  date: string;
-  category: readonly string[];
-  muted: string;
-}) {
-  return (
-    <div className={`flex items-center gap-2 font-sans text-xs ${muted}`}>
-      <span>{date}</span>
-      {category.includes('talk') ? <span>Talk</span> : null}
-    </div>
-  );
-}
 
 const BlogPage = () => {
   return (
@@ -47,22 +30,18 @@ const BlogPage = () => {
 
         <StaggerReveal className="flex flex-col gap-8 px-4 sm:px-0" delay={0.15}>
           {BLOG_ITEMS.map((item) => {
+            const external = item.href.startsWith('https');
             const body = (
               <>
-                <BlogItemMeta
-                  date={item.date}
-                  category={item.category}
-                  muted={
-                    item.href.startsWith('https') ? 'text-foreground/60' : 'text-foreground/50'
-                  }
-                />
+                <div
+                  className={`flex items-center gap-2 font-sans text-xs ${external ? 'text-foreground/60' : 'text-foreground/50'}`}
+                >
+                  <span>{item.date}</span>
+                  {item.category.includes('talk') ? <span>Talk</span> : null}
+                </div>
                 <div className="flex items-center gap-1">
                   <span>{item.title}</span>
-                  {item.href.startsWith('https') ? (
-                    <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  ) : (
-                    <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  )}
+                  <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
                 {'subTitle' in item && item.subTitle ? (
                   <span className="text-foreground/60 mt-1 text-xs">{item.subTitle}</span>
@@ -75,7 +54,7 @@ const BlogPage = () => {
                 key={item.title}
                 className="group font-serif transition-opacity duration-300 hover:opacity-60"
               >
-                {item.href.startsWith('https') ? (
+                {external ? (
                   <a
                     href={item.href}
                     target="_blank"
