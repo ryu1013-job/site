@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { StaggerItem, StaggerReveal } from '~/components/motion/stagger-reveal';
-import { Links } from '../../../_components/links';
-import { Socials } from '../../../_components/socials';
+import { Links } from '../../_components/links';
+import { Socials } from '../../_components/socials';
 
 export default function BlogPostLayout({ children }: { children: React.ReactNode }) {
   return (
