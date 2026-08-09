@@ -4,6 +4,7 @@ import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { cn } from '~/lib/utils';
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '~/lib/site';
 import './globals.css';
 
 const geist = Geist({
@@ -24,8 +25,17 @@ const notoSerifJp = Noto_Serif_JP({
 });
 
 export const metadata: Metadata = {
-  title: 'ryu',
-  description: 'Product Engineer',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  alternates: {
+    types: {
+      'application/rss+xml': '/blog/feed.xml',
+    },
+  },
 };
 
 export default function RootLayout({
