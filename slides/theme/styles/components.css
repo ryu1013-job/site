@@ -28,7 +28,7 @@
     border-radius: 0;
     background: transparent;
     color: var(--vbg-text-secondary);
-    font-family: var(--vbg-font-mono);
+    font-family: var(--vbg-font-sans);
     font-size: var(--vbg-type-label);
     font-weight: var(--vbg-weight-regular);
     letter-spacing: 0;
@@ -62,6 +62,7 @@
     display: block;
     margin: 0 0 var(--vbg-space-2);
     color: var(--vbg-text-secondary);
+    font-family: var(--vbg-font-sans);
     font-size: var(--vbg-type-label);
     font-weight: var(--vbg-weight-medium);
     letter-spacing: 0;
@@ -103,11 +104,11 @@
   .ryu-item-title {
     margin: 0 0 var(--vbg-space-2);
     color: var(--vbg-text-primary);
-    font-family: var(--vbg-font-sans);
+    font-family: var(--vbg-font-serif);
     font-size: var(--vbg-type-subsection);
     font-weight: var(--vbg-weight-heading);
     line-height: var(--vbg-leading-section);
-    letter-spacing: -0.015em;
+    letter-spacing: -0.01em;
   }
 
   .ryu-item p:last-child {

@@ -12,7 +12,7 @@ Creates `slides/my-talk/slides.md` with `theme: ../theme`. After deploy: `/slide
 
 ## Shared style
 
-All decks use `slides/theme`, styled to [Vercel design.md](https://vercel.com/design.md) (Geist, monochrome, spacing over cards).
+All decks use `slides/theme`, with portfolio fonts (Goudy + Noto Serif JP body, Geist UI) and [Vercel design.md](https://vercel.com/design.md) restraint.
 
 Write normal Markdown, or these tags:
 

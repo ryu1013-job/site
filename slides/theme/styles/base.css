@@ -1,7 +1,7 @@
 .slidev-layout {
   background: var(--vbg-surface-primary);
   color: var(--vbg-text-primary);
-  font-family: var(--vbg-font-sans);
+  font-family: var(--vbg-font-serif);
   font-size: var(--vbg-type-body);
   font-weight: var(--vbg-weight-regular);
   line-height: var(--vbg-leading-body);
@@ -16,10 +16,10 @@
   h2,
   h3,
   h4 {
-    font-family: var(--vbg-font-sans);
+    font-family: var(--vbg-font-serif);
     font-weight: var(--vbg-weight-heading);
     color: var(--vbg-text-primary);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
     text-wrap: balance;
     margin: 0 0 var(--vbg-space-3);
   }
@@ -141,6 +141,7 @@
 
   th {
     color: var(--vbg-text-secondary);
+    font-family: var(--vbg-font-sans);
     font-size: var(--vbg-type-label);
     font-weight: var(--vbg-weight-medium);
   }

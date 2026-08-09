@@ -2,7 +2,7 @@
   "name": "slidev-theme-ryu",
   "version": "0.1.0",
   "private": true,
-  "description": "Shared theme for ryu.engineer slides (Vercel design.md / Geist)",
+  "description": "Shared theme for ryu.engineer slides (site fonts + Vercel design.md)",
   "keywords": ["slidev-theme", "slidev"],
   "engines": {
     "slidev": ">=0.47.0"
@@ -17,7 +17,8 @@
         "persist": false
       },
       "fonts": {
-        "sans": "Geist, Noto Sans JP",
+        "sans": "Geist",
+        "serif": "Noto Serif JP",
         "mono": "Geist Mono"
       }
     }
