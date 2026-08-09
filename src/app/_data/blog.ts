@@ -7,6 +7,34 @@ export const BLOG_ITEMS = [
     href: 'https://fortee.jp/fec-kansai-2026/proposal/91219d93-833a-4a09-b5c4-34c5cb43a194',
   },
   {
+    date: '2026/08/09',
+    category: ['talk', 'tech'],
+    title: 'Intro',
+    subTitle: 'スライド共有テーマのサンプル',
+    href: '/slides/intro/',
+  },
+  {
+    date: '2026/08/09',
+    category: ['talk', 'product'],
+    title: 'Product Kickoff',
+    subTitle: 'キックオフ向けの仮スライド',
+    href: '/slides/product-kickoff/',
+  },
+  {
+    date: '2026/08/09',
+    category: ['talk', 'tech'],
+    title: 'Shipping Notes',
+    subTitle: 'リリース前チェックの仮スライド',
+    href: '/slides/shipping-notes/',
+  },
+  {
+    date: '2026/08/09',
+    category: ['talk', 'design'],
+    title: 'Design Tokens Talk',
+    subTitle: 'テーマとタグの使い方サンプル',
+    href: '/slides/design-tokens-talk/',
+  },
+  {
     date: '2026/06/26',
     category: ['yuru'],
     title: 'Trying',
@@ -88,3 +116,8 @@ export const BLOG_ITEMS = [
 ] as const;
 
 export type BlogItem = (typeof BLOG_ITEMS)[number];
+
+/** Same-origin microfrontends (e.g. /slides) need a full navigation, not Next soft nav. */
+export function isOffsiteBlogHref(href: string) {
+  return href.startsWith('http') || href.startsWith('/slides');
+}
