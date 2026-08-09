@@ -20,7 +20,7 @@ Plain Markdown only.
 | `span`, `li` | Noto Sans JP |
 | `code` | Geist Mono |
 
-Layouts: `cover` · `section` · `default` · `end`
+Per-deck styles go in `styles/index.css` next to that deck’s `slides.md`.
 
 ## Commands
 

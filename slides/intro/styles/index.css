@@ -1,6 +1,5 @@
-.slidev-layout.cover,
-.slidev-layout.end,
-.slidev-layout.section {
+/* Intro-only presentation (no shared layouts). */
+.slidev-layout.hero {
   display: grid;
   height: 100%;
   align-content: center;

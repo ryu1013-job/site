@@ -1,7 +1,7 @@
 ---
 theme: ../theme
 title: Intro
-layout: cover
+class: hero
 ---
 
 # Intro
@@ -9,7 +9,7 @@ layout: cover
 同じドメインで、スライドを公開する。
 
 ---
-layout: section
+class: hero
 ---
 
 # 書くだけ
@@ -33,7 +33,7 @@ bun run create -- my-talk
 ```
 
 ---
-layout: end
+class: hero
 ---
 
 # あとは出す
