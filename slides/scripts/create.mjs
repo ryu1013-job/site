@@ -23,27 +23,42 @@ try {
 }
 
 const template = `---
-theme: default
+theme: ../theme
 title: ${slug}
 info: |
   Add a short description.
-class: text-center
-drawings:
-  persist: false
-transition: slide-left
-mdc: true
 ---
+
+---
+layout: cover
+---
+
+<Kicker>${slug}</Kicker>
 
 # ${slug}
 
-Edit \`slides/${slug}/slides.md\`
+<Lead>One short supporting sentence.</Lead>
+
+<Tag>draft</Tag>
 
 ---
 
-# Next slide
+# Contents
 
-- Bullet one
-- Bullet two
+- Point one
+- Point two
+
+<Note type="tip">
+
+Use tags like Tag, Grid, Item, Steps for structure. See intro deck.
+
+</Note>
+
+---
+layout: end
+---
+
+# Thanks
 `;
 
 await mkdir(dir, { recursive: true });

@@ -1,0 +1,145 @@
+:root {
+  --ryu-bg: #f4f6f8;
+  --ryu-bg-elevated: #ffffff;
+  --ryu-ink: #14181f;
+  --ryu-muted: #5c6675;
+  --ryu-line: #d7dde6;
+  --ryu-accent: #1f4b63;
+  --ryu-accent-soft: color-mix(in oklab, var(--ryu-accent) 12%, white);
+  --ryu-warn: #8a4b12;
+  --ryu-warn-soft: #f4e6d4;
+  --ryu-ok: #1f5a3a;
+  --ryu-ok-soft: #dcefe4;
+  --ryu-radius: 0.55rem;
+  --ryu-shadow: 0 18px 40px -28px rgb(20 24 31 / 35%);
+}
+
+html.dark {
+  --ryu-bg: #10141a;
+  --ryu-bg-elevated: #171d26;
+  --ryu-ink: #eef2f6;
+  --ryu-muted: #9aa5b4;
+  --ryu-line: #2a3340;
+  --ryu-accent: #8ebed4;
+  --ryu-accent-soft: color-mix(in oklab, var(--ryu-accent) 18%, black);
+  --ryu-warn: #f0c28a;
+  --ryu-warn-soft: #3a2a16;
+  --ryu-ok: #97d4b2;
+  --ryu-ok-soft: #173226;
+  --ryu-shadow: 0 18px 40px -24px rgb(0 0 0 / 55%);
+}
+
+.slidev-layout {
+  background:
+    radial-gradient(1200px 500px at 10% -10%, color-mix(in oklab, var(--ryu-accent) 10%, transparent), transparent 60%),
+    linear-gradient(160deg, var(--ryu-bg), color-mix(in oklab, var(--ryu-bg) 70%, white));
+  color: var(--ryu-ink);
+  --uno: px-14 py-10 text-[1.15rem] leading-relaxed;
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--slidev-font-serif), 'Noto Serif JP', serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  h1 {
+    --uno: text-5xl mb-4;
+  }
+
+  h2 {
+    --uno: text-3xl mb-3;
+  }
+
+  h3 {
+    --uno: text-2xl mb-2;
+  }
+
+  p {
+    --uno: mb-3;
+  }
+
+  h1 + p,
+  h2 + p {
+    color: var(--ryu-muted);
+    --uno: text-[1.2rem] -mt-2 mb-5;
+  }
+
+  ul,
+  ol {
+    --uno: my-4 pl-5;
+  }
+
+  li {
+    --uno: my-1.5;
+  }
+
+  li::marker {
+    color: var(--ryu-accent);
+  }
+
+  a {
+    color: var(--ryu-accent);
+    text-underline-offset: 0.18em;
+  }
+
+  strong {
+    font-weight: 650;
+  }
+
+  blockquote {
+    border-left: 3px solid var(--ryu-accent);
+    background: var(--ryu-bg-elevated);
+    box-shadow: var(--ryu-shadow);
+    color: var(--ryu-muted);
+    --uno: my-5 px-5 py-3 rounded-md;
+  }
+
+  code {
+    font-family: var(--slidev-font-mono), 'IBM Plex Mono', ui-monospace, monospace;
+    background: var(--ryu-accent-soft);
+    color: var(--ryu-accent);
+    --uno: px-1.5 py-0.5 rounded text-[0.92em];
+  }
+
+  pre {
+    background: var(--ryu-bg-elevated) !important;
+    border: 1px solid var(--ryu-line);
+    box-shadow: var(--ryu-shadow);
+    --uno: rounded-lg;
+  }
+
+  pre code {
+    background: transparent;
+    color: inherit;
+    --uno: p-0;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--ryu-line);
+    --uno: my-6;
+  }
+
+  table {
+    --uno: w-full text-left my-4;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    border-bottom: 1px solid var(--ryu-line);
+    --uno: py-2 pr-4;
+  }
+
+  th {
+    color: var(--ryu-muted);
+    font-weight: 600;
+    font-size: 0.85em;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+}

@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Slides
 
-Decks live under `slides/<slug>/slides.md`. Adding a folder is enough — build discovers them automatically.
+Decks live under `slides/<slug>/slides.md`. Adding a folder is enough — build discovers them automatically. All decks share `slides/theme` (tags like `<Kicker>`, `<Lead>`, `<Tag>`, `<Grid>`).
 
 ```bash
 cd slides
