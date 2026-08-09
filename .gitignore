@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# agent tooling
+.agents/
+skills-lock.json
+
+# slides microfrontend
+/slides/node_modules
+/slides/dist
+
+# fallback copy into the portfolio until MFE is attached
+/public/slides

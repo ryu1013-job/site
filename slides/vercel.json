@@ -1,0 +1,25 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "bun install",
+  "buildCommand": "bun run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    {
+      "source": "/slides",
+      "destination": "/slides/index.html"
+    },
+    {
+      "source": "/slides/",
+      "destination": "/slides/index.html"
+    },
+    {
+      "source": "/slides/:slug",
+      "destination": "/slides/:slug/index.html"
+    },
+    {
+      "source": "/slides/:slug/:path*",
+      "destination": "/slides/:slug/index.html"
+    }
+  ]
+}

@@ -3,17 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev --port 3000",
+    "build": "bun run slides:prepare && next build",
     "start": "next start",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "fmt": "oxfmt",
-    "fmt:check": "oxfmt --check"
+    "fmt:check": "oxfmt --check",
+    "proxy": "microfrontends proxy microfrontends.json --local-apps site",
+    "slides:dev": "bun --cwd slides run dev",
+    "slides:create": "bun --cwd slides run create",
+    "slides:prepare": "bun scripts/prepare-slides.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
     "@vercel/analytics": "^2.0.1",
+    "@vercel/microfrontends": "^2.4.0",
     "@vercel/speed-insights": "^2.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
