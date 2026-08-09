@@ -10,7 +10,7 @@ export const LOG_ITEMS = [
     date: '2026/06/26',
     category: 'Blog',
     title: 'Trying',
-    href: '/blog/trying',
+    href: 'https://www.ryu1013.com/blog/trying',
   },
   {
     date: '2026/06/15',
@@ -44,14 +44,14 @@ export const LOG_ITEMS = [
     date: '2026/03/22',
     category: 'Blog',
     title: 'Guiding Principles v0',
-    href: '/blog/guiding-principles-v0',
+    href: 'https://www.ryu1013.com/blog/guiding-principles-v0',
   },
   {
     date: '2026/03/09',
     category: 'Blog',
     title: 'What to Sell',
     subTitle: '顧客は機能を買わない。求める3つの価値',
-    href: '/blog/what-to-sell',
+    href: 'https://www.ryu1013.com/blog/what-to-sell',
   },
   {
     date: '2026/01/10',
@@ -71,13 +71,13 @@ export const LOG_ITEMS = [
     category: 'Blog',
     title: 'Speed is Power...?',
     subTitle: 'プロダクト開発で本当に加速すべきもの',
-    href: '/blog/speed-is-power',
+    href: 'https://www.ryu1013.com/blog/speed-is-power',
   },
   {
     date: '2025/12/07',
     category: 'Blog',
     title: 'Less, but better',
-    href: '/blog/less-but-better',
+    href: 'https://www.ryu1013.com/blog/less-but-better',
   },
   {
     date: '2025/06/07',

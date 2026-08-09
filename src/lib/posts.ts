@@ -9,6 +9,10 @@ const BLOG_DIR = path.join(process.cwd(), 'src/content/blog');
 type MDXContent = (props: MDXProps) => React.JSX.Element;
 
 export function getPostSlugs() {
+  if (!fs.existsSync(BLOG_DIR)) {
+    return [];
+  }
+
   return fs
     .readdirSync(BLOG_DIR)
     .filter((file) => file.endsWith('.mdx'))
