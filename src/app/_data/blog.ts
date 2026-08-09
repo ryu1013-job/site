@@ -10,7 +10,7 @@ export const BLOG_ITEMS = [
     date: '2026/08/09',
     category: ['talk', 'tech'],
     title: 'Intro',
-    subTitle: 'スライド共有テーマのサンプル',
+    subTitle: 'シンプルな共有テーマのサンプル',
     href: '/slides/intro/',
   },
   {
@@ -31,7 +31,7 @@ export const BLOG_ITEMS = [
     date: '2026/08/09',
     category: ['talk', 'design'],
     title: 'Design Tokens Talk',
-    subTitle: 'テーマとタグの使い方サンプル',
+    subTitle: 'フォント役割のサンプル',
     href: '/slides/design-tokens-talk/',
   },
   {
