@@ -1,12 +1,16 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import type { MDXProps } from 'mdx/types';
-import { EXTERNAL_ITEMS } from '~/app/_data/blog';
-import { byDateDesc, type BlogEntry, type PostMeta } from './blog';
+import { parseDate, type PostMeta } from './blog';
 
 const BLOG_DIR = path.join(process.cwd(), 'src/content/blog');
 
 type MDXContent = (props: MDXProps) => React.JSX.Element;
+
+export type Post = {
+  slug: string;
+  meta: PostMeta;
+};
 
 export function getPostSlugs() {
   if (!fs.existsSync(BLOG_DIR)) {
@@ -25,32 +29,15 @@ export async function getPost(slug: string) {
   return { Content: Content as MDXContent, meta: meta as PostMeta };
 }
 
-export async function getPosts() {
+export async function getPosts(): Promise<Post[]> {
   const posts = await Promise.all(
     getPostSlugs().map(async (slug) => {
       const { meta } = await getPost(slug);
-
       return { slug, meta };
     }),
   );
 
   return posts
     .filter(({ meta }) => !meta.draft)
-    .map(({ slug, meta }): BlogEntry & { slug: string } => ({
-      kind: 'post',
-      slug,
-      href: `/blog/${slug}`,
-      title: meta.title,
-      subTitle: meta.subTitle,
-      date: meta.date,
-      category: meta.category,
-    }))
-    .toSorted(byDateDesc);
-}
-
-/** Local MDX posts merged with the externally hosted writing and talks. */
-export async function getBlogEntries(): Promise<BlogEntry[]> {
-  const posts = await getPosts();
-
-  return [...posts, ...EXTERNAL_ITEMS].toSorted(byDateDesc);
+    .toSorted((a, b) => parseDate(b.meta.date).getTime() - parseDate(a.meta.date).getTime());
 }

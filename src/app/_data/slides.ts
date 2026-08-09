@@ -34,3 +34,7 @@ export const SLIDES = [
 export type Slide = (typeof SLIDES)[number];
 
 export const SLIDE_ROTATE_MS = 4500;
+
+export function isExternalHref(href: string) {
+  return href.startsWith('http');
+}

@@ -3,8 +3,7 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { BlurCrossfade } from '~/components/motion/blur-crossfade';
-import { isExternalHref } from '~/lib/href';
-import type { Slide } from '../_data/slides';
+import { isExternalHref, type Slide } from '../_data/slides';
 
 type SlideLinkProps = {
   index: number;

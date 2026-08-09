@@ -5,7 +5,6 @@ import { ViewTransition } from 'react';
 import { StaggerItem, StaggerReveal } from '~/components/motion/stagger-reveal';
 import { parseDate } from '~/lib/blog';
 import { getPost, getPosts } from '~/lib/posts';
-import { SITE_DESCRIPTION, SITE_URL } from '~/lib/site';
 import { Links } from '../../_components/links';
 import { Socials } from '../../_components/socials';
 
@@ -17,26 +16,16 @@ type PageProps = {
 
 export async function generateStaticParams() {
   const posts = await getPosts();
-
   return posts.map(({ slug }) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const { meta } = await getPost(slug);
-  const description = meta.subTitle ?? SITE_DESCRIPTION;
 
   return {
     title: meta.title,
-    description,
-    alternates: { canonical: `/blog/${slug}` },
-    openGraph: {
-      type: 'article',
-      title: meta.title,
-      description,
-      url: `${SITE_URL}/blog/${slug}`,
-      publishedTime: parseDate(meta.date).toISOString(),
-    },
+    description: meta.subTitle,
   };
 }
 
@@ -58,18 +47,11 @@ const BlogPostPage = async ({ params }: PageProps) => {
             </Link>
           </ViewTransition>
           <StaggerReveal className="flex flex-col gap-3">
-            <StaggerItem className="text-foreground/60 flex items-center gap-3 font-sans text-xs">
+            <StaggerItem className="text-foreground/60 font-sans text-xs">
               <time dateTime={parseDate(meta.date).toISOString()}>{meta.date}</time>
-              <span className="flex items-center gap-2">
-                {meta.category.map((category) => (
-                  <span key={category}>{category}</span>
-                ))}
-              </span>
             </StaggerItem>
             <StaggerItem>
-              <ViewTransition name={`post-title-${slug}`} default="none" share="morph">
-                <h1 className="font-serif text-2xl">{meta.title}</h1>
-              </ViewTransition>
+              <h1 className="font-serif text-2xl">{meta.title}</h1>
             </StaggerItem>
             {meta.subTitle ? (
               <StaggerItem className="text-foreground/60 font-serif text-sm">
