@@ -4,7 +4,7 @@ import { ViewTransition } from 'react';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { StaggerItem, StaggerReveal } from '~/components/motion/stagger-reveal';
 import { Links } from '../_components/links';
-import { BLOG_ITEMS, isOffsiteBlogHref } from '../_data/blog';
+import { BLOG_ITEMS } from '../_data/blog';
 import { Socials } from '../_components/socials';
 
 const BlogPage = () => {
@@ -26,30 +26,22 @@ const BlogPage = () => {
                 </div>
 
                 <StaggerReveal className="flex flex-col gap-8 px-4 sm:px-0" delay={0.15}>
-                    {BLOG_ITEMS.map((item) => {
-                        const offsite = isOffsiteBlogHref(item.href);
-                        const external = item.href.startsWith('http');
-
-                        return (
+                    {BLOG_ITEMS.map((item) => (
                         <StaggerItem
-                            key={item.href}
+                            key={item.title}
                             className="group font-serif transition-opacity duration-300 hover:opacity-60"
                         >
-                            {offsite ? (
+                            {item.href.startsWith('https') ? (
                                 <a
                                     href={item.href}
-                                    target={external ? '_blank' : undefined}
-                                    rel={external ? 'noopener noreferrer' : undefined}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="flex flex-col gap-1"
                                 >
                                     <span className="font-sans text-xs text-foreground/60">{item.date}</span>
                                     <div className="flex items-center gap-1">
                                         <span>{item.title}</span>
-                                        {external ? (
-                                          <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                                        ) : (
-                                          <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-                                        )}
+                                        <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                                     </div>
                                     {'subTitle' in item && item.subTitle ? (
                                         <span className="mt-1 text-xs text-foreground/60">{item.subTitle}</span>
@@ -68,8 +60,7 @@ const BlogPage = () => {
                                 </Link>
                             )}
                         </StaggerItem>
-                        );
-                    })}
+                    ))}
                 </StaggerReveal>
 
                 <StaggerReveal delay={1}>
