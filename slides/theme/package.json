@@ -8,9 +8,9 @@
     "slidev": ">=0.47.0"
   },
   "slidev": {
-    "colorSchema": "both",
+    "colorSchema": "light",
     "defaults": {
-      "colorSchema": "auto",
+      "colorSchema": "light",
       "transition": "fade",
       "mdc": true,
       "drawings": {

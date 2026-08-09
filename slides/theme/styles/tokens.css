@@ -1,20 +1,35 @@
 :root {
   color-scheme: light;
-  --bg: light-dark(oklch(1 0 0), oklch(0 0 0));
-  --fg: light-dark(oklch(0.205 0 0), oklch(0.946 0 0));
-  --muted: light-dark(oklch(0.42 0 0), oklch(0.706 0 0));
-  --line: light-dark(oklch(0 0 0 / 0.1), oklch(1 0 0 / 0.13));
+  --bg: #ffffff;
+  --fg: #171717;
+  --muted: #525252;
+  --line: rgb(0 0 0 / 0.12);
   --font-serif: "Noto Serif JP", serif;
   --font-sans: "Noto Sans JP", sans-serif;
   --font-mono: "Geist Mono", ui-monospace, monospace;
 }
 
-html.dark {
-  color-scheme: dark;
+/* Keep presentation chrome the same as the slide canvas (no letterbox band). */
+html,
+body,
+#app,
+#page-root {
+  background: var(--bg) !important;
+  color: var(--fg);
 }
 
-@media (prefers-color-scheme: dark) {
-  html:not(.light) {
-    color-scheme: dark;
-  }
+html.dark,
+html.dark body,
+html.dark #app,
+html.dark #page-root {
+  background: var(--bg) !important;
+  color: var(--fg);
+  color-scheme: light;
+}
+
+/* Hide residual UI chrome that reads as a faint bottom strip. */
+.slidev-progress,
+#slidev-progress,
+.slidev-slide-content > .absolute.bottom-0 {
+  display: none !important;
 }

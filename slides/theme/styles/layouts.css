@@ -8,13 +8,13 @@
   align-content: center;
 
   h1 {
-    font-size: 7rem;
-    line-height: 1.05;
+    font-size: 6rem;
+    line-height: 1.15;
   }
 
   h1 + p {
-    font-size: 2.25rem;
-    max-width: 16em;
+    font-size: 2.1rem;
+    max-width: none;
   }
 }
 
