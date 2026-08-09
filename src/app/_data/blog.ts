@@ -117,7 +117,7 @@ export const BLOG_ITEMS = [
 
 export type BlogItem = (typeof BLOG_ITEMS)[number];
 
-/** Same-origin microfrontends (e.g. /slides) need a full navigation, not Next soft nav. */
+/** Static /slides decks need a full navigation, not Next soft nav. */
 export function isOffsiteBlogHref(href: string) {
   return href.startsWith('http') || href.startsWith('/slides');
 }

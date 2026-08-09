@@ -1,6 +1,4 @@
 .slidev-layout.cover,
-.slidev-layout.intro,
-.slidev-layout.center,
 .slidev-layout.end,
 .slidev-layout.section {
   display: grid;
@@ -16,9 +14,4 @@
     font-size: 2.1rem;
     max-width: none;
   }
-}
-
-.slidev-layout.center {
-  justify-items: start;
-  text-align: left;
 }
