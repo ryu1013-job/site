@@ -34,7 +34,7 @@ const BlogPostPage = async ({ params }: PageProps) => {
   return (
     <>
       <header className="flex flex-col gap-6">
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center justify-between gap-2">
           <ViewTransition name="profile-avatar" default="none" share="morph">
             <Link
               href="/blog"
