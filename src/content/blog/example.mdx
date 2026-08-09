@@ -1,0 +1,27 @@
+export const meta = {
+  title: 'Example post',
+  date: '2026/01/01',
+  subTitle: 'Delete this file once you publish your first post',
+  category: ['yuru'],
+  draft: true,
+};
+
+Write posts as MDX files in this directory. Export a `meta` object, then write the body in markdown.
+
+## Frontmatter shape
+
+- `title` — required
+- `date` — required, `YYYY/MM/DD`
+- `subTitle` — optional
+- `category` — required, one or more of `tech` | `product` | `design` | `work` | `talk` | `yuru`
+- `draft` — optional; when `true`, the post is omitted from the index, feed, and sitemap
+
+## Body
+
+Supports GFM (tables, task lists, strikethrough) and Japanese-friendly `**bold**`.
+
+```md
+A short paragraph with **emphasis**.
+
+- list item
+```
