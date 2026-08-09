@@ -1,0 +1,16 @@
+{
+  "name": "slides",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun scripts/dev.mjs",
+    "build": "bun scripts/build.mjs",
+    "create": "bun scripts/create.mjs"
+  },
+  "dependencies": {
+    "@slidev/cli": "^52.19.0",
+    "@vercel/microfrontends": "^2.4.0",
+    "vue": "^3.5.41"
+  }
+}

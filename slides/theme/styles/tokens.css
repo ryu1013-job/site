@@ -1,0 +1,36 @@
+:root {
+  color-scheme: dark;
+  --bg: #000000;
+  --fg: #f5f5f5;
+  --muted: #a3a3a3;
+  --line: rgb(255 255 255 / 0.14);
+  --code-bg: #111111;
+  --font-serif: "Noto Serif JP", serif;
+  --font-sans: "Noto Sans JP", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --slidev-slide-container-background: #000000;
+  --slidev-code-background: #111111;
+}
+
+/* Unify Slidev chrome + canvas (bg-main is #121212 by default). */
+html,
+body,
+#app,
+#page-root,
+#slide-container,
+.slidev-slide-container,
+.slidev-page,
+html.dark,
+html.dark body,
+html.dark #app,
+html.dark #page-root {
+  background: #000000 !important;
+  background-color: #000000 !important;
+  color: var(--fg);
+  color-scheme: dark;
+}
+
+.slidev-progress,
+#slidev-progress {
+  display: none !important;
+}

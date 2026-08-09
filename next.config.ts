@@ -1,5 +1,6 @@
 import createMDX from '@next/mdx';
 import type { NextConfig } from 'next';
+import { withMicrofrontends } from '@vercel/microfrontends/next/config';
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
@@ -7,9 +8,19 @@ const nextConfig: NextConfig = {
   experimental: {
     viewTransition: true,
   },
-  // The blog index enumerates src/content/blog with fs, which the tracer cannot follow.
+  // The blog loader enumerates src/content/blog with fs, which the tracer cannot follow.
   outputFileTracingIncludes: {
     '/*': ['./src/content/blog/**/*'],
+  },
+  // Fallback when the slides microfrontend is not attached yet.
+  // Once MFE routes /slides/* to the slides project, these are unused.
+  async rewrites() {
+    return [
+      { source: '/slides', destination: '/slides/index.html' },
+      { source: '/slides/', destination: '/slides/index.html' },
+      { source: '/slides/:slug', destination: '/slides/:slug/index.html' },
+      { source: '/slides/:slug/:path*', destination: '/slides/:slug/index.html' },
+    ];
   },
 };
 
@@ -24,4 +35,4 @@ const withMDX = createMDX({
   },
 });
 
-export default withMDX(nextConfig);
+export default withMicrofrontends(withMDX(nextConfig));

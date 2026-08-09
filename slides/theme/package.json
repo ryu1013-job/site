@@ -1,0 +1,26 @@
+{
+  "name": "slidev-theme-ryu",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Minimal shared theme for ryu.engineer slides",
+  "keywords": ["slidev-theme", "slidev"],
+  "engines": {
+    "slidev": ">=0.47.0"
+  },
+  "slidev": {
+    "colorSchema": "dark",
+    "defaults": {
+      "colorSchema": "dark",
+      "transition": "fade",
+      "mdc": true,
+      "drawings": {
+        "persist": false
+      },
+      "fonts": {
+        "sans": "Noto Sans JP",
+        "serif": "Noto Serif JP",
+        "mono": "Geist Mono"
+      }
+    }
+  }
+}
