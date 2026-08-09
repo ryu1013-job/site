@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { ViewTransition } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { StaggerItem, StaggerReveal } from '~/components/motion/stagger-reveal';
-import { Badge } from '~/components/ui/badge';
 import { Links } from '../_components/links';
 import { BLOG_ITEMS } from '../_data/blog';
 import { Socials } from '../_components/socials';
@@ -38,11 +37,7 @@ const BlogPage = () => {
                   className={`flex items-center gap-2 font-sans text-xs ${external ? 'text-foreground/60' : 'text-foreground/50'}`}
                 >
                   <span>{item.date}</span>
-                  {'isTalk' in item && item.isTalk ? (
-                    <Badge variant="secondary" className="text-foreground/60">
-                      Talk
-                    </Badge>
-                  ) : null}
+                  {'isTalk' in item && item.isTalk ? <span>Talk</span> : null}
                 </div>
                 <div className="flex items-center gap-1">
                   <span>{item.title}</span>
