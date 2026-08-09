@@ -13,7 +13,7 @@ withDefaults(
 const labels: Record<string, string> = {
   note: 'Note',
   tip: 'Tip',
-  warn: 'Warn',
+  warn: 'Warning',
 }
 </script>
 

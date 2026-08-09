@@ -2,37 +2,42 @@
 .slidev-layout.intro,
 .slidev-layout.center,
 .slidev-layout.end {
-  --uno: h-full grid;
+  display: grid;
+  height: 100%;
 
   h1 {
-    --uno: text-6xl leading-tight mb-4;
+    font-size: var(--vbg-type-display);
+    line-height: var(--vbg-leading-display);
+    margin-bottom: var(--vbg-space-4);
   }
 
   h1 + p,
   .ryu-lead {
-    --uno: text-xl max-w-3xl;
+    font-size: var(--vbg-type-lede);
+    max-width: 42rem;
   }
 }
 
 .slidev-layout.section {
-  --uno: h-full grid items-center;
+  display: grid;
+  height: 100%;
+  align-items: center;
 
   h1 {
-    --uno: text-6xl leading-tight;
+    font-size: var(--vbg-type-display);
+    line-height: var(--vbg-leading-display);
   }
 
   .ryu-kicker {
-    --uno: mb-4;
+    margin-bottom: var(--vbg-space-4);
   }
 }
 
-.slidev-layout.cover::before,
-.slidev-layout.section::before,
-.slidev-layout.end::before {
-  content: '';
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--ryu-accent), transparent 70%);
-  pointer-events: none;
+.slidev-layout.cover,
+.slidev-layout.end {
+  background: var(--vbg-surface-primary);
+}
+
+.slidev-layout.center {
+  text-align: left;
 }

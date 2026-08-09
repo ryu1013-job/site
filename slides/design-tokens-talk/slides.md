@@ -9,7 +9,7 @@ info: |
 layout: cover
 ---
 
-<Kicker>Sample 03</Kicker>
+<Kicker>Sample</Kicker>
 
 # Design Tokens Talk
 

@@ -13,7 +13,7 @@ layout: cover
 
 # Intro
 
-<Lead>同じテーマ・同じタグで、デッキを増やしても見た目が揃う。</Lead>
+<Lead>同じテーマとタグで、デッキを増やしても見た目が揃う。</Lead>
 
 <Tag>Slidev</Tag>
 <Tag>Microfrontends</Tag>
@@ -23,7 +23,7 @@ layout: cover
 layout: section
 ---
 
-<Kicker>Chapter 01</Kicker>
+<Kicker>Writing</Kicker>
 
 # 書き方はシンプルに
 

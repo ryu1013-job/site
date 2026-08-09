@@ -12,18 +12,18 @@ Creates `slides/my-talk/slides.md` with `theme: ../theme`. After deploy: `/slide
 
 ## Shared style
 
-All decks use `slides/theme` (`slidev-theme-ryu`).
+All decks use `slides/theme`, styled to [Vercel design.md](https://vercel.com/design.md) (Geist, monochrome, spacing over cards).
 
 Write normal Markdown, or these tags:
 
 | Tag | Role |
 | --- | --- |
-| `<Kicker>` | small uppercase label |
+| `<Kicker>` | quiet metadata line (sentence case) |
 | `<Lead>` | supporting sentence under a title |
-| `<Tag>` | keyword chip |
-| `<Note type="tip\|warn\|note">` | callout |
-| `<Grid cols="2\|3">` + `<Item title="...">` | content grid |
-| `<Steps>` | numbered steps (`<li>`) |
+| `<Tag>` | mono keyword, not a pill |
+| `<Note type="tip\|warn\|note">` | callout with left rule |
+| `<Grid cols="2\|3">` + `<Item title="...">` | peer columns |
+| `<Steps>` | numbered steps |
 | `<Split>` | two columns |
 
 Layouts (frontmatter): `cover` · `section` · `default` · `center` · `end`

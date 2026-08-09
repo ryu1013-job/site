@@ -9,7 +9,7 @@ info: |
 layout: cover
 ---
 
-<Kicker>Sample 02</Kicker>
+<Kicker>Sample</Kicker>
 
 # Shipping Notes
 

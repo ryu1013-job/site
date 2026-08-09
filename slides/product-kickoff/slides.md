@@ -9,7 +9,7 @@ info: |
 layout: cover
 ---
 
-<Kicker>Sample 01</Kicker>
+<Kicker>Sample</Kicker>
 
 # Product Kickoff
 
