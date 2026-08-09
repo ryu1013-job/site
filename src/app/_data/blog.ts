@@ -2,6 +2,7 @@ export const BLOG_ITEMS = [
   {
     date: '2026/10/12',
     category: ['talk', 'tech', 'design'],
+    isTalk: true,
     title: '気持ちぃ〜角丸 Squircles',
     subTitle: 'フロントエンドカンファレンス関西で登壇',
     href: 'https://fortee.jp/fec-kansai-2026/proposal/91219d93-833a-4a09-b5c4-34c5cb43a194',
@@ -10,11 +11,12 @@ export const BLOG_ITEMS = [
     date: '2026/06/26',
     category: ['yuru'],
     title: 'Trying',
-    href: 'https://www.ryu1013.com/blog/trying',
+    href: '/blog/trying',
   },
   {
     date: '2026/06/15',
     category: ['talk', 'product', 'work'],
+    isTalk: true,
     title: 'スタートアップ4社と考える、ドメイン理解の方法論',
     subTitle: '',
     href: 'https://resilire.connpass.com/event/391602',
@@ -22,6 +24,7 @@ export const BLOG_ITEMS = [
   {
     date: '2026/06/06',
     category: ['talk', 'design', 'tech'],
+    isTalk: true,
     title: '「おすすめ」 はなぜ信用されないのか　〜 信頼を築くUI/UX設計 〜',
     subTitle: 'フロントエンド・PHPカンファレンス北海道2026で登壇',
     href: 'https://fortee.jp/frontend-phpcon-do-2026/proposal/6cd24c56-8f89-4df0-a4f6-83f8be3ec255',
@@ -29,6 +32,7 @@ export const BLOG_ITEMS = [
   {
     date: '2026/03/26',
     category: ['talk', 'product'],
+    isTalk: true,
     title: '機能を売るな、対価を届けろ',
     subTitle: '新卒N年目のLT交流会！好きな技術を語ろう！',
     href: 'https://fresh-engineers.connpass.com/event/386529',
@@ -37,14 +41,14 @@ export const BLOG_ITEMS = [
     date: '2026/03/22',
     category: ['yuru'],
     title: 'Guiding Principles v0',
-    href: 'https://www.ryu1013.com/blog/guiding-principles-v0',
+    href: '/blog/guiding-principles-v0',
   },
   {
     date: '2026/03/09',
     category: ['yuru', 'product'],
     title: 'What to Sell',
     subTitle: '顧客は機能を買わない。求める3つの価値',
-    href: 'https://www.ryu1013.com/blog/what-to-sell',
+    href: '/blog/what-to-sell',
   },
   {
     date: '2025/12/21',
@@ -58,13 +62,13 @@ export const BLOG_ITEMS = [
     category: ['yuru', 'product'],
     title: 'Speed is Power...?',
     subTitle: 'プロダクト開発で本当に加速すべきもの',
-    href: 'https://www.ryu1013.com/blog/speed-is-power',
+    href: '/blog/speed-is-power',
   },
   {
     date: '2025/12/07',
     category: ['yuru', 'product', 'design'],
     title: 'Less, but better',
-    href: 'https://www.ryu1013.com/blog/less-but-better',
+    href: '/blog/less-but-better',
   },
   {
     date: '2025/02/27',

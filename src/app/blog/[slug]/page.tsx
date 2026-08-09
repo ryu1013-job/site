@@ -34,18 +34,22 @@ const BlogPostPage = async ({ params }: PageProps) => {
   return (
     <>
       <header className="flex flex-col gap-6">
-        <ViewTransition name="profile-avatar" default="none" share="morph">
-          <Link
-            href="/blog"
-            className="size-10 overflow-hidden rounded-[50%] [corner-shape:squircle]"
-          >
-            <Image src="/icon-3.webp" alt="" width={56} height={56} />
-          </Link>
-        </ViewTransition>
-        <StaggerReveal className="flex flex-col gap-3">
-          <StaggerItem className="text-foreground/60 font-sans text-xs">
-            <time dateTime={parseDate(meta.date).toISOString()}>{meta.date}</time>
-          </StaggerItem>
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <ViewTransition name="profile-avatar" default="none" share="morph">
+            <Link
+              href="/blog"
+              className="size-10 overflow-hidden rounded-[50%] [corner-shape:squircle]"
+            >
+              <Image src="/icon-3.webp" alt="" width={56} height={56} />
+            </Link>
+          </ViewTransition>
+          <StaggerReveal>
+            <StaggerItem className="text-foreground/60 font-sans text-xs">
+              <time dateTime={parseDate(meta.date).toISOString()}>{meta.date}</time>
+            </StaggerItem>
+          </StaggerReveal>
+        </div>
+        <StaggerReveal className="flex flex-col gap-3" delay={0.1}>
           <StaggerItem>
             <h1 className="font-serif text-2xl">{meta.title}</h1>
           </StaggerItem>
