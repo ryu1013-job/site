@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# agent tooling
+.agents/
+skills-lock.json
+
+# slides microfrontend (has its own node_modules / dist)
+/slides/node_modules
+/slides/dist

@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# site
 
-## Getting Started
+Personal portfolio ([Next.js](https://nextjs.org)) and Slidev decks on one domain via [Vercel Microfrontends](https://vercel.com/docs/microfrontends).
 
-First, run the development server:
+| App | Path | Vercel project | Root Directory |
+| --- | --- | --- | --- |
+| Portfolio (default) | `/` | `site` | `.` |
+| Slides | `/slides/<slug>/` | `slides` | `slides` |
+
+## Portfolio
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+bun install
+bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Slides
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Decks live under `slides/<slug>/slides.md`. Adding a folder is enough — build discovers them automatically.
 
-## Learn More
+```bash
+cd slides
+bun install
+bun run create -- my-talk
+bun run dev -- my-talk
+bun run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+See [`slides/README.md`](./slides/README.md).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Microfrontends (local)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+`microfrontends.json` routes `/slides` (+ nested paths) to the `slides` project. Portfolio is the default app.
+
+```bash
+# terminal 1 — local proxy (http://localhost:3024)
+bun run proxy
+
+# terminal 2 — portfolio (optional: also run a deck with slides:dev)
+bun run dev
+```
+
+Requests to `/slides/*` fall back to production when the slides app is not running locally.
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Keep the existing **site** project pointed at the repo root.
+2. Create a second project **slides** from the same repo with Root Directory `slides` (Other / static output `dist`).
+3. Create a Microfrontends group, set **site** as the default app, add **slides**.
+4. Deploy both. After `microfrontends.json` is live on **site**, `https://www.ryu.engineer/slides/intro/` is served by the slides project.
