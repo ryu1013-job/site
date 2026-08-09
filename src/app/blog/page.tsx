@@ -37,7 +37,7 @@ const BlogPage = () => {
                   className={`flex items-center gap-2 font-sans text-xs ${external ? 'text-foreground/60' : 'text-foreground/50'}`}
                 >
                   <span>{item.date}</span>
-                  {item.category.includes('talk') ? <span>Talk</span> : null}
+                  {'isTalk' in item && item.isTalk ? <span>Talk</span> : null}
                 </div>
                 <div className="flex items-center gap-1">
                   <span>{item.title}</span>
