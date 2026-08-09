@@ -10,7 +10,7 @@ export const BLOG_ITEMS = [
     date: '2026/06/26',
     category: ['yuru'],
     title: 'Trying',
-    href: 'https://www.ryu1013.com/blog/trying',
+    href: '/blog/trying',
   },
   {
     date: '2026/06/15',
@@ -37,14 +37,14 @@ export const BLOG_ITEMS = [
     date: '2026/03/22',
     category: ['yuru'],
     title: 'Guiding Principles v0',
-    href: 'https://www.ryu1013.com/blog/guiding-principles-v0',
+    href: '/blog/guiding-principles-v0',
   },
   {
     date: '2026/03/09',
     category: ['yuru', 'product'],
     title: 'What to Sell',
     subTitle: '顧客は機能を買わない。求める3つの価値',
-    href: 'https://www.ryu1013.com/blog/what-to-sell',
+    href: '/blog/what-to-sell',
   },
   {
     date: '2025/12/21',
@@ -58,13 +58,13 @@ export const BLOG_ITEMS = [
     category: ['yuru', 'product'],
     title: 'Speed is Power...?',
     subTitle: 'プロダクト開発で本当に加速すべきもの',
-    href: 'https://www.ryu1013.com/blog/speed-is-power',
+    href: '/blog/speed-is-power',
   },
   {
     date: '2025/12/07',
     category: ['yuru', 'product', 'design'],
     title: 'Less, but better',
-    href: 'https://www.ryu1013.com/blog/less-but-better',
+    href: '/blog/less-but-better',
   },
   {
     date: '2025/02/27',

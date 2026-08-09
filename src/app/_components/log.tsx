@@ -1,9 +1,13 @@
 'use client';
 
-import { ArrowUpRight } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Marker, MarkerContent } from '~/components/ui/marker';
+import { isExternalHref } from '~/lib/href';
 import { LOG_ITEMS } from '../_data/log';
+
+const MotionLink = motion.create(Link);
 
 const listVariants = {
   hidden: {},
@@ -23,6 +27,31 @@ const itemVariants = {
   },
 };
 
+const ITEM_CLASS_NAME =
+  'group flex flex-col gap-2 transition-opacity duration-100 hover:opacity-50';
+
+function LogItemBody({ item, external }: { item: (typeof LOG_ITEMS)[number]; external: boolean }) {
+  return (
+    <>
+      <div className="flex items-center gap-2 font-sans text-xs">
+        <span>{item.date}</span>
+        <span className="text-foreground/60">{item.category}</span>
+      </div>
+      <div className="flex items-center gap-1">
+        <p className="font-serif">{item.title}</p>
+        {external ? (
+          <ArrowUpRight className="size-4 flex-shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        ) : (
+          <ArrowRight className="size-4 flex-shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
+        )}
+      </div>
+      {'subTitle' in item && item.subTitle ? (
+        <p className="text-foreground/60 font-serif text-xs">{item.subTitle}</p>
+      ) : null}
+    </>
+  );
+}
+
 export function Log() {
   return (
     <div>
@@ -36,28 +65,32 @@ export function Log() {
         whileInView="show"
         viewport={{ once: true, amount: 0.1 }}
       >
-        {LOG_ITEMS.map((item) => (
-          <motion.a
-            key={`${item.date}-${item.title}`}
-            href={item.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            variants={itemVariants}
-            className="group flex flex-col gap-2 transition-opacity duration-100 hover:opacity-50"
-          >
-            <div className="flex items-center gap-2 font-sans text-xs">
-              <span>{item.date}</span>
-              <span className="text-foreground/60">{item.category}</span>
-            </div>
-            <div className="flex items-center gap-1">
-              <p className="font-serif">{item.title}</p>
-              <ArrowUpRight className="size-4 flex-shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </div>
-            {'subTitle' in item && item.subTitle ? (
-              <p className="text-foreground/60 font-serif text-xs">{item.subTitle}</p>
-            ) : null}
-          </motion.a>
-        ))}
+        {LOG_ITEMS.map((item) => {
+          const external = isExternalHref(item.href);
+          const key = `${item.date}-${item.title}`;
+
+          return external ? (
+            <motion.a
+              key={key}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              variants={itemVariants}
+              className={ITEM_CLASS_NAME}
+            >
+              <LogItemBody item={item} external />
+            </motion.a>
+          ) : (
+            <MotionLink
+              key={key}
+              href={item.href}
+              variants={itemVariants}
+              className={ITEM_CLASS_NAME}
+            >
+              <LogItemBody item={item} external={false} />
+            </MotionLink>
+          );
+        })}
       </motion.div>
     </div>
   );
