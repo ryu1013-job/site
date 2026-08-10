@@ -8,6 +8,13 @@ export const BLOG_ITEMS = [
     href: 'https://fortee.jp/fec-kansai-2026/proposal/91219d93-833a-4a09-b5c4-34c5cb43a194',
   },
   {
+    date: '2026/08/10',
+    category: ['yuru', 'work'],
+    title: '看取りで見える、医療と介護の違い',
+    subTitle: '一日でも長く、と、その一日をどう過ごすか',
+    href: '/blog/mitori-kaigo-iryo',
+  },
+  {
     date: '2026/06/26',
     category: ['yuru'],
     title: 'Trying',
