@@ -24,6 +24,7 @@ const notoSerifJp = Noto_Serif_JP({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.ryu.engineer'),
   title: 'ryu',
   description: 'Product Engineer',
 };
