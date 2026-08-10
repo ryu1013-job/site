@@ -84,7 +84,6 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             flexDirection: 'column',
             gap: 24,
             width: '100%',
-            maxWidth: 980,
             flex: 1,
             justifyContent: 'center',
           }}
