@@ -24,9 +24,10 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   const subTitle = meta.subTitle ?? '';
   const date = meta.date;
 
-  const [goudyData, notoData, iconData] = await Promise.all([
+  const [goudyData, notoSerifData, notoSansData, iconData] = await Promise.all([
     readFile(join(process.cwd(), 'src/app/goudy-old-style-regular.ttf')),
-    loadGoogleFont('Noto Serif JP', `${title}${subTitle}${date}`),
+    loadGoogleFont('Noto Serif JP', `${title}${subTitle}`),
+    loadGoogleFont('Noto Sans JP', date),
     readFile(join(process.cwd(), 'src/app/icon.png')),
   ]);
 
@@ -75,43 +76,32 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           style={{
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'space-between',
+            gap: 20,
             width: '100%',
             position: 'relative',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-            <img
-              src={iconSrc}
-              width={56}
-              height={56}
-              alt=""
-              style={{
-                width: 56,
-                height: 56,
-                borderRadius: 16,
-                objectFit: 'cover',
-              }}
-            />
-            <div
-              style={{
-                fontSize: 36,
-                fontFamily: 'Goudy Old Style',
-                color: '#111111',
-                letterSpacing: '-0.02em',
-              }}
-            >
-              ryu
-            </div>
-          </div>
+          <img
+            src={iconSrc}
+            width={56}
+            height={56}
+            alt=""
+            style={{
+              width: 56,
+              height: 56,
+              borderRadius: 16,
+              objectFit: 'cover',
+            }}
+          />
           <div
             style={{
-              fontSize: 28,
-              fontFamily: 'Noto Serif JP',
-              color: 'rgba(17,17,17,0.55)',
+              fontSize: 36,
+              fontFamily: 'Goudy Old Style',
+              color: '#111111',
+              letterSpacing: '-0.02em',
             }}
           >
-            {date}
+            ryu
           </div>
         </div>
 
@@ -125,13 +115,12 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             position: 'relative',
             flex: 1,
             justifyContent: 'center',
-            paddingBottom: 24,
           }}
         >
           <div
             style={{
               fontSize: title.length > 40 ? 52 : 64,
-              fontFamily: 'Goudy Old Style, Noto Serif JP',
+              fontFamily: 'Noto Serif JP',
               color: '#111111',
               lineHeight: 1.25,
               letterSpacing: '-0.02em',
@@ -156,6 +145,17 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             </div>
           ) : null}
         </div>
+
+        <div
+          style={{
+            fontSize: 28,
+            fontFamily: 'Noto Sans JP',
+            color: 'rgba(17,17,17,0.55)',
+            position: 'relative',
+          }}
+        >
+          {date}
+        </div>
       </div>
     ),
     {
@@ -169,7 +169,13 @@ export default async function Image({ params }: { params: Promise<{ slug: string
         },
         {
           name: 'Noto Serif JP',
-          data: notoData,
+          data: notoSerifData,
+          style: 'normal',
+          weight: 400,
+        },
+        {
+          name: 'Noto Sans JP',
+          data: notoSansData,
           style: 'normal',
           weight: 400,
         },
