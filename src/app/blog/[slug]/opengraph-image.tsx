@@ -51,25 +51,23 @@ export default async function Image({ params }: { params: Promise<{ slug: string
         <div
           style={{
             position: 'absolute',
-            top: -80,
-            right: -40,
-            width: 520,
-            height: 420,
+            top: -120,
+            right: -80,
+            width: 720,
+            height: 520,
             backgroundImage:
-              'linear-gradient(125deg, rgba(255,255,255,0.55) 0%, rgba(255,220,200,0.25) 28%, rgba(180,200,255,0.2) 55%, rgba(196,196,196,0) 78%)',
-            transform: 'rotate(-8deg)',
+              'radial-gradient(ellipse at 62% 38%, rgba(255,255,255,0.72) 0%, rgba(255,236,214,0.28) 26%, rgba(196,210,255,0.18) 46%, rgba(255,190,210,0.1) 58%, rgba(196,196,196,0) 72%)',
           }}
         />
         <div
           style={{
             position: 'absolute',
-            top: 40,
-            right: 120,
-            width: 280,
-            height: 360,
+            top: 20,
+            right: 40,
+            width: 420,
+            height: 380,
             backgroundImage:
-              'linear-gradient(160deg, rgba(255,255,255,0.35) 0%, rgba(255,180,200,0.12) 40%, rgba(196,196,196,0) 70%)',
-            transform: 'rotate(18deg)',
+              'radial-gradient(ellipse at 40% 20%, rgba(255,255,255,0.4) 0%, rgba(220,230,255,0.14) 35%, rgba(196,196,196,0) 68%)',
           }}
         />
 
