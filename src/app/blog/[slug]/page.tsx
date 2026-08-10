@@ -24,6 +24,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: meta.title,
     description: meta.subTitle,
+    openGraph: {
+      type: 'article',
+      title: meta.title,
+      description: meta.subTitle,
+      publishedTime: parseDate(meta.date).toISOString(),
+      authors: ['ryu'],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: meta.title,
+      description: meta.subTitle,
+    },
   };
 }
 
