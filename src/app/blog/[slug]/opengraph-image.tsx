@@ -97,6 +97,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
               letterSpacing: '-0.02em',
               display: 'flex',
               flexWrap: 'wrap',
+              width: '100%',
             }}
           >
             {title}
@@ -110,6 +111,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
                 lineHeight: 1.4,
                 display: 'flex',
                 flexWrap: 'wrap',
+                width: '100%',
               }}
             >
               {subTitle}
