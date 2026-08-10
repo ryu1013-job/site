@@ -43,42 +43,15 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           flexDirection: 'column',
           justifyContent: 'space-between',
           padding: '64px 72px',
-          backgroundColor: '#c4c4c4',
-          position: 'relative',
-          overflow: 'hidden',
+          backgroundColor: '#ffffff',
         }}
       >
-        {/* Soft prism / light-leak accents (matches site OG) */}
-        <div
-          style={{
-            position: 'absolute',
-            top: -120,
-            right: -80,
-            width: 720,
-            height: 520,
-            backgroundImage:
-              'radial-gradient(ellipse at 62% 38%, rgba(255,255,255,0.72) 0%, rgba(255,236,214,0.28) 26%, rgba(196,210,255,0.18) 46%, rgba(255,190,210,0.1) 58%, rgba(196,196,196,0) 72%)',
-          }}
-        />
-        <div
-          style={{
-            position: 'absolute',
-            top: 20,
-            right: 40,
-            width: 420,
-            height: 380,
-            backgroundImage:
-              'radial-gradient(ellipse at 40% 20%, rgba(255,255,255,0.4) 0%, rgba(220,230,255,0.14) 35%, rgba(196,196,196,0) 68%)',
-          }}
-        />
-
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
             gap: 20,
             width: '100%',
-            position: 'relative',
           }}
         >
           <img
@@ -112,7 +85,6 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             gap: 24,
             width: '100%',
             maxWidth: 980,
-            position: 'relative',
             flex: 1,
             justifyContent: 'center',
           }}
@@ -148,10 +120,9 @@ export default async function Image({ params }: { params: Promise<{ slug: string
 
         <div
           style={{
-            fontSize: 28,
+            fontSize: 22,
             fontFamily: 'Noto Sans JP',
             color: 'rgba(17,17,17,0.55)',
-            position: 'relative',
           }}
         >
           {date}
