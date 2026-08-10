@@ -10,8 +10,8 @@ export const BLOG_ITEMS = [
   {
     date: '2026/08/10',
     category: ['yuru', 'work'],
-    title: '看取りケアで見える、介護と医療の違い',
-    subTitle: '治すことと、生ききること',
+    title: '看取りで見える、医療と介護の違い',
+    subTitle: '一日でも長く、と、その一日をどう過ごすか',
     href: '/blog/mitori-kaigo-iryo',
   },
   {
