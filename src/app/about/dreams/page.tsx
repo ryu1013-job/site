@@ -15,12 +15,12 @@ import {
 
 export const metadata: Metadata = {
   title: 'Dreams — ryu',
-  description: 'Dreams and intentions by age.',
+  description: '歳ごとの夢と意図',
 };
 
 function statusLabel(status: DreamStatus | undefined) {
-  if (status === 'done') return 'done';
-  if (status === 'carried') return 'carried';
+  if (status === 'done') return '達成';
+  if (status === 'carried') return '持ち越し';
   return null;
 }
 
@@ -29,10 +29,10 @@ function DreamLine({ dream }: { dream: Dream }) {
   const isDone = dream.status === 'done';
 
   return (
-    <li
+    <div
       className={cn(
-        'flex flex-col gap-1 border-l border-foreground/10 pl-4',
-        isDone && 'text-foreground/45',
+        'flex flex-col gap-1',
+        isDone && 'text-foreground/50',
       )}
     >
       <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
@@ -40,15 +40,37 @@ function DreamLine({ dream }: { dream: Dream }) {
           {dream.title}
         </span>
         {label ? (
-          <span className="font-sans text-[11px] tracking-wide text-foreground/35 lowercase">
-            {label}
-          </span>
+          <span className="font-sans text-xs text-foreground/50">{label}</span>
         ) : null}
       </div>
       {dream.note ? (
-        <p className="text-xs/5 text-foreground/50">{dream.note}</p>
+        <p className="text-foreground/60 text-xs">{dream.note}</p>
       ) : null}
-    </li>
+    </div>
+  );
+}
+
+function DreamAgeItem({
+  age,
+  theme,
+  dreams,
+}: {
+  age: number;
+  theme?: string;
+  dreams: Dream[];
+}) {
+  return (
+    <div className="flex flex-col gap-3 font-serif">
+      <div className="flex w-fit flex-wrap items-center gap-2 font-sans text-xs tabular-nums">
+        <span>{formatAge(age)}</span>
+        {theme ? <span className="text-foreground/50">{theme}</span> : null}
+      </div>
+      <div className="flex flex-col gap-3 text-xs/5 text-foreground/90">
+        {dreams.map((dream) => (
+          <DreamLine key={dream.title} dream={dream} />
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -56,98 +78,40 @@ const DreamsPage = () => {
   return (
     <>
       <Links />
-      <div className="mx-auto flex w-full max-w-2xl flex-col gap-14 px-4 py-16 sm:gap-16 sm:px-0">
-        <header className="flex flex-col gap-6">
-          <div className="flex items-center gap-2">
-            <ViewTransition name="profile-avatar" default="none" share="morph">
-              <Link
-                href="/"
-                className="relative size-10 overflow-hidden rounded-[50%] [corner-shape:squircle]"
-              >
-                <Image src="/icon-1.webp" alt="" width={56} height={56} />
-              </Link>
-            </ViewTransition>
-            <StaggerReveal>
-              <StaggerItem className="font-serif">
-                <h1 className="text-base">Dreams</h1>
-              </StaggerItem>
-            </StaggerReveal>
-          </div>
-
-          <StaggerReveal className="flex flex-col gap-4" delay={0.08}>
-            <StaggerItem>
-              <p className="font-serif text-sm/7 text-foreground/70">
-                What I hope for at each age — quiet intentions, not a plan.
-              </p>
-            </StaggerItem>
-            <StaggerItem>
-              <p className="font-sans text-xs text-foreground/45">
-                <Link href="/about" className="underline-dotted hover:opacity-70">
-                  About
-                </Link>
-                <span className="mx-1.5 text-foreground/25">/</span>
-                <span>Dreams</span>
-              </p>
+      <div className="mx-auto flex w-full max-w-2xl flex-col gap-10 py-16 sm:gap-12">
+        <div className="flex items-center gap-2 px-4 sm:px-0">
+          <ViewTransition name="profile-avatar" default="none" share="morph">
+            <Link
+              href="/"
+              className="size-10 overflow-hidden rounded-[50%] [corner-shape:squircle]"
+            >
+              <Image src="/icon-1.webp" alt="" width={56} height={56} />
+            </Link>
+          </ViewTransition>
+          <StaggerReveal>
+            <StaggerItem className="font-serif">
+              <h2 className="text-base">Dreams</h2>
             </StaggerItem>
           </StaggerReveal>
+        </div>
 
-          <StaggerReveal delay={0.12}>
-            <StaggerItem>
-              <nav
-                aria-label="Ages"
-                className="flex flex-wrap gap-x-4 gap-y-2 font-sans text-xs tabular-nums text-foreground/50"
-              >
-                {DREAM_AGES.map((entry) => (
-                  <a
-                    key={entry.age}
-                    href={`#age-${entry.age}`}
-                    className="transition-colors hover:text-foreground"
-                  >
-                    {formatAge(entry.age)}
-                  </a>
-                ))}
-              </nav>
-            </StaggerItem>
-          </StaggerReveal>
-        </header>
-
-        <StaggerReveal className="flex flex-col gap-16" delay={0.18}>
+        <StaggerReveal
+          className="flex flex-col gap-10 px-4 sm:gap-12 sm:px-0"
+          delay={0.15}
+        >
           {DREAM_AGES.map((entry) => (
-            <StaggerItem key={entry.age}>
-              <section
-                id={`age-${entry.age}`}
-                className="scroll-mt-20 flex flex-col gap-6 font-serif"
-              >
-                <div className="flex flex-col gap-2">
-                  <h2 className="font-sans text-3xl tabular-nums tracking-tight text-foreground/90 sm:text-4xl">
-                    {formatAge(entry.age)}
-                  </h2>
-                  {entry.theme ? (
-                    <p className="text-sm/6 text-foreground/55">{entry.theme}</p>
-                  ) : null}
-                </div>
-
-                <ul className="flex flex-col gap-5 text-sm/7">
-                  {entry.dreams.map((dream) => (
-                    <DreamLine key={dream.title} dream={dream} />
-                  ))}
-                </ul>
-              </section>
+            <StaggerItem key={entry.age} id={`age-${entry.age}`}>
+              <DreamAgeItem {...entry} />
             </StaggerItem>
           ))}
         </StaggerReveal>
 
-        <StaggerReveal delay={0.4}>
+        <StaggerReveal delay={1}>
           <StaggerItem className="flex flex-col items-center gap-8 py-6 font-sans">
             <Socials />
-            <div className="flex flex-col items-center gap-3 text-sm">
-              <Link href="/about" className="underline hover:opacity-70">
-                Back to About
-              </Link>
-              <Link href="/" className="text-foreground/50 underline hover:opacity-70">
-                Back to Home
-              </Link>
-            </div>
+            <Link href="/about" className="underline-dotted text-sm hover:opacity-70">
+              Back to About
+            </Link>
           </StaggerItem>
         </StaggerReveal>
       </div>

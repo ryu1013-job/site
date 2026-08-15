@@ -157,14 +157,13 @@ const AboutPage = () => {
                         <h2 className="text-lg">Dreams</h2>
                         <div className="flex flex-col gap-4 text-sm/8">
                             <p>
-                                Quiet intentions I set at each age — what I hope to move toward, not
-                                a rigid plan.
+                                歳ごとに立てている静かな意図。計画ではなく、向かいたいもの。
                             </p>
                             <Link
                                 href="/about/dreams"
                                 className="w-fit font-sans text-sm underline-dotted hover:opacity-70"
                             >
-                                Dreams by age
+                                歳ごとの夢
                             </Link>
                         </div>
                     </StaggerItem>

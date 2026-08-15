@@ -13,71 +13,70 @@ export type DreamAge = {
 };
 
 /**
- * Dreams by age — quiet intentions for each year of life.
- * Edit freely; the page reads newest age first.
- * (Born 2003/10/13)
+ * 歳ごとの夢。新しい歳が上。
+ * （生年月日: 2003/10/13）
  */
 export const DREAM_AGES: DreamAge[] = [
   {
     age: 22,
-    theme: 'Closer to care, closer to products that last',
+    theme: '介護に近づき、続くプロダクトをつくる',
     dreams: [
       {
-        title: 'Bring happiness to the care industry — in practice, not only in words',
+        title: '介護に関わる人の幸せを、言葉だけでなく実践で届ける',
         status: 'active',
       },
       {
-        title: 'Ship something caregivers open every morning',
-        note: 'Useful enough to become a habit',
+        title: '介護職員が毎朝開きたくなるものを届ける',
+        note: '習慣になるくらい、役に立つこと',
         status: 'active',
       },
       {
-        title: 'Deepen domain understanding through real facilities and real people',
+        title: '現場と人に触れながら、ドメイン理解を深める',
         status: 'active',
       },
       {
-        title: 'Keep building in public — talks, writing, and small experiments',
+        title: '登壇・文章・小さな実験で、公開しながらつくり続ける',
         status: 'active',
       },
     ],
   },
   {
     age: 21,
-    theme: 'From engineer to product engineer',
+    theme: 'エンジニアからプロダクトエンジニアへ',
     dreams: [
       {
-        title: 'Join full-time and take ownership of care products',
+        title: '正社員として入り、介護プロダクトのオーナーシップを持つ',
         status: 'done',
       },
       {
-        title: 'Learn care by reading, visiting, and listening',
+        title: '本を読み、施設を訪れ、話を聞いて介護を学ぶ',
         status: 'done',
       },
       {
-        title: 'Speak and write about what I am building',
+        title: 'つくっていることを、話して書く',
         status: 'done',
       },
       {
-        title: 'Find a long-horizon mission worth a decade',
-        note: 'Care became that answer',
+        title: '10年続けられるミッションを見つける',
+        note: '答えは介護だった',
         status: 'done',
       },
     ],
   },
   {
     age: 20,
-    theme: 'Learn by shipping',
+    theme: '出すことで学ぶ',
     dreams: [
       {
-        title: 'Grow through internships across different products',
+        title: '複数のプロダクトのインターンで成長する',
         status: 'done',
       },
       {
-        title: 'Strengthen front-end craft and product sense',
+        title: 'フロントエンドの技術とプロダクト感覚を鍛える',
         status: 'done',
       },
       {
-        title: 'Stay curious enough to keep making things',
+        title: 'ものづくりへの好奇心を手放さない',
         status: 'carried',
       },
     ],
