@@ -153,6 +153,22 @@ const AboutPage = () => {
                         </div>
                     </StaggerItem>
 
+                    <StaggerItem className="flex flex-col gap-6 font-serif">
+                        <h2 className="text-lg">Dreams</h2>
+                        <div className="flex flex-col gap-4 text-sm/8">
+                            <p>
+                                Quiet intentions I set each year — what I hope to move toward, not
+                                a rigid plan.
+                            </p>
+                            <Link
+                                href="/about/dreams"
+                                className="w-fit font-sans text-sm underline-dotted hover:opacity-70"
+                            >
+                                Dreams by year
+                            </Link>
+                        </div>
+                    </StaggerItem>
+
                     <StaggerItem className="flex flex-col items-center gap-8 py-6 font-sans">
                         <Socials />
                         <Link href="/" className="text-sm underline hover:opacity-70">
