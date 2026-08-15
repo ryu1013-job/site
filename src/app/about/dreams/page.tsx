@@ -29,24 +29,27 @@ function DreamLine({ dream }: { dream: Dream }) {
   const isDone = dream.status === 'done';
 
   return (
-    <div
+    <li
       className={cn(
         'flex flex-col gap-1',
         isDone && 'text-foreground/50',
       )}
     >
       <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-        <span className={cn(isDone && 'line-through decoration-foreground/25')}>
-          {dream.title}
+        <span>
+          <span aria-hidden="true">- </span>
+          <span className={cn(isDone && 'line-through decoration-foreground/25')}>
+            {dream.title}
+          </span>
         </span>
         {label ? (
           <span className="font-sans text-xs text-foreground/50">{label}</span>
         ) : null}
       </div>
       {dream.note ? (
-        <p className="text-foreground/60 text-xs">{dream.note}</p>
+        <p className="text-foreground/60 pl-[0.75em] text-xs">{dream.note}</p>
       ) : null}
-    </div>
+    </li>
   );
 }
 
@@ -65,11 +68,11 @@ function DreamAgeItem({
         <span>{formatAge(age)}</span>
         {theme ? <span className="text-foreground/50">{theme}</span> : null}
       </div>
-      <div className="flex flex-col gap-3 text-xs/5 text-foreground/90">
+      <ul className="flex flex-col gap-2 text-xs/5 text-foreground/90">
         {dreams.map((dream) => (
           <DreamLine key={dream.title} dream={dream} />
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
