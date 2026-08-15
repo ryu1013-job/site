@@ -6,11 +6,16 @@ import { StaggerItem, StaggerReveal } from '~/components/motion/stagger-reveal';
 import { cn } from '~/lib/utils';
 import { Links } from '../../_components/links';
 import { Socials } from '../../_components/socials';
-import { DREAM_YEARS, type Dream, type DreamStatus } from '../../_data/dreams';
+import {
+  DREAM_AGES,
+  formatAge,
+  type Dream,
+  type DreamStatus,
+} from '../../_data/dreams';
 
 export const metadata: Metadata = {
   title: 'Dreams — ryu',
-  description: 'Year by year dreams and intentions.',
+  description: 'Dreams and intentions by age.',
 };
 
 function statusLabel(status: DreamStatus | undefined) {
@@ -72,7 +77,7 @@ const DreamsPage = () => {
           <StaggerReveal className="flex flex-col gap-4" delay={0.08}>
             <StaggerItem>
               <p className="font-serif text-sm/7 text-foreground/70">
-                What I hope for, year by year — quiet intentions, not a plan.
+                What I hope for at each age — quiet intentions, not a plan.
               </p>
             </StaggerItem>
             <StaggerItem>
@@ -89,16 +94,16 @@ const DreamsPage = () => {
           <StaggerReveal delay={0.12}>
             <StaggerItem>
               <nav
-                aria-label="Years"
+                aria-label="Ages"
                 className="flex flex-wrap gap-x-4 gap-y-2 font-sans text-xs tabular-nums text-foreground/50"
               >
-                {DREAM_YEARS.map((entry) => (
+                {DREAM_AGES.map((entry) => (
                   <a
-                    key={entry.year}
-                    href={`#year-${entry.year}`}
+                    key={entry.age}
+                    href={`#age-${entry.age}`}
                     className="transition-colors hover:text-foreground"
                   >
-                    {entry.year}
+                    {formatAge(entry.age)}
                   </a>
                 ))}
               </nav>
@@ -107,15 +112,15 @@ const DreamsPage = () => {
         </header>
 
         <StaggerReveal className="flex flex-col gap-16" delay={0.18}>
-          {DREAM_YEARS.map((entry) => (
-            <StaggerItem key={entry.year}>
+          {DREAM_AGES.map((entry) => (
+            <StaggerItem key={entry.age}>
               <section
-                id={`year-${entry.year}`}
+                id={`age-${entry.age}`}
                 className="scroll-mt-20 flex flex-col gap-6 font-serif"
               >
                 <div className="flex flex-col gap-2">
                   <h2 className="font-sans text-3xl tabular-nums tracking-tight text-foreground/90 sm:text-4xl">
-                    {entry.year}
+                    {formatAge(entry.age)}
                   </h2>
                   {entry.theme ? (
                     <p className="text-sm/6 text-foreground/55">{entry.theme}</p>

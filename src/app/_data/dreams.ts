@@ -6,19 +6,20 @@ export type Dream = {
   status?: DreamStatus;
 };
 
-export type DreamYear = {
-  year: number;
+export type DreamAge = {
+  age: number;
   theme?: string;
   dreams: Dream[];
 };
 
 /**
- * Annual dreams — quiet intentions for each year.
- * Edit freely; the page reads newest year first.
+ * Dreams by age — quiet intentions for each year of life.
+ * Edit freely; the page reads newest age first.
+ * (Born 2003/10/13)
  */
-export const DREAM_YEARS: DreamYear[] = [
+export const DREAM_AGES: DreamAge[] = [
   {
-    year: 2026,
+    age: 22,
     theme: 'Closer to care, closer to products that last',
     dreams: [
       {
@@ -41,7 +42,7 @@ export const DREAM_YEARS: DreamYear[] = [
     ],
   },
   {
-    year: 2025,
+    age: 21,
     theme: 'From engineer to product engineer',
     dreams: [
       {
@@ -64,7 +65,7 @@ export const DREAM_YEARS: DreamYear[] = [
     ],
   },
   {
-    year: 2024,
+    age: 20,
     theme: 'Learn by shipping',
     dreams: [
       {
@@ -82,3 +83,7 @@ export const DREAM_YEARS: DreamYear[] = [
     ],
   },
 ];
+
+export function formatAge(age: number) {
+  return `${age}歳`;
+}
