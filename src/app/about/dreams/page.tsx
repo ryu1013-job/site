@@ -3,74 +3,25 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { ViewTransition } from 'react';
 import { StaggerItem, StaggerReveal } from '~/components/motion/stagger-reveal';
-import { cn } from '~/lib/utils';
 import { Links } from '../../_components/links';
 import { Socials } from '../../_components/socials';
-import {
-  DREAM_AGES,
-  formatAge,
-  type Dream,
-  type DreamStatus,
-} from '../../_data/dreams';
+import { DREAM_AGES, formatAge, type Dream } from '../../_data/dreams';
 
 export const metadata: Metadata = {
   title: 'Dreams — ryu',
   description: '歳ごとの夢と意図',
 };
 
-function statusLabel(status: DreamStatus | undefined) {
-  if (status === 'done') return '達成';
-  if (status === 'carried') return '持ち越し';
-  return null;
-}
-
-function DreamLine({ dream }: { dream: Dream }) {
-  const label = statusLabel(dream.status);
-  const isDone = dream.status === 'done';
-
-  return (
-    <li
-      className={cn(
-        'flex flex-col gap-1',
-        isDone && 'text-foreground/50',
-      )}
-    >
-      <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-        <span>
-          <span aria-hidden="true">- </span>
-          <span className={cn(isDone && 'line-through decoration-foreground/25')}>
-            {dream.title}
-          </span>
-        </span>
-        {label ? (
-          <span className="font-sans text-xs text-foreground/50">{label}</span>
-        ) : null}
-      </div>
-      {dream.note ? (
-        <p className="text-foreground/60 pl-[0.75em] text-xs">{dream.note}</p>
-      ) : null}
-    </li>
-  );
-}
-
-function DreamAgeItem({
-  age,
-  theme,
-  dreams,
-}: {
-  age: number;
-  theme?: string;
-  dreams: Dream[];
-}) {
+function DreamAgeItem({ age, dreams }: { age: number; dreams: Dream[] }) {
   return (
     <div className="flex flex-col gap-3 font-serif">
-      <div className="flex w-fit flex-wrap items-center gap-2 font-sans text-xs tabular-nums">
-        <span>{formatAge(age)}</span>
-        {theme ? <span className="text-foreground/50">{theme}</span> : null}
-      </div>
+      <div className="font-sans text-xs tabular-nums">{formatAge(age)}</div>
       <ul className="flex flex-col gap-2 text-xs/5 text-foreground/90">
         {dreams.map((dream) => (
-          <DreamLine key={dream.title} dream={dream} />
+          <li key={dream.title}>
+            <span aria-hidden="true">- </span>
+            {dream.title}
+          </li>
         ))}
       </ul>
     </div>
