@@ -1,5 +1,6 @@
 export type Dream = {
   title: string;
+  done?: boolean;
 };
 
 export type DreamAge = {
@@ -25,15 +26,15 @@ export const DREAM_AGES: DreamAge[] = [
   },
   {
     age: 22,
-    dreams: [{ title: 'エンジニアになる' }],
+    dreams: [{ title: 'エンジニアになる', done: true }],
   },
   {
     age: 20,
-    dreams: [{ title: 'エンジニアのバイトをする' }],
+    dreams: [{ title: 'エンジニアのバイトをする', done: true }],
   },
   {
     age: 18,
-    dreams: [{ title: '東京で一人暮らし' }],
+    dreams: [{ title: '東京で一人暮らし', done: true }],
   },
 ];
 

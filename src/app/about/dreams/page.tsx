@@ -2,7 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { ViewTransition } from 'react';
+import { Check } from 'lucide-react';
 import { StaggerItem, StaggerReveal } from '~/components/motion/stagger-reveal';
+import { cn } from '~/lib/utils';
 import { Links } from '../../_components/links';
 import { Socials } from '../../_components/socials';
 import { DREAM_AGES, formatAge, type Dream } from '../../_data/dreams';
@@ -12,16 +14,37 @@ export const metadata: Metadata = {
   description: '歳ごとの夢と意図',
 };
 
+function DreamLine({ dream }: { dream: Dream }) {
+  const done = dream.done === true;
+
+  return (
+    <li className="flex items-start gap-1.5">
+      {done ? (
+        <Check
+          aria-hidden
+          className="mt-px size-3.5 shrink-0 text-green-500"
+          strokeWidth={2.5}
+        />
+      ) : (
+        <span aria-hidden="true" className="shrink-0">
+          -
+        </span>
+      )}
+      <span className={cn(done && 'text-foreground/50 line-through decoration-foreground/30')}>
+        {dream.title}
+      </span>
+      {done ? <span className="sr-only">（達成）</span> : null}
+    </li>
+  );
+}
+
 function DreamAgeItem({ age, dreams }: { age: number; dreams: Dream[] }) {
   return (
     <div className="flex flex-col gap-3 font-serif">
       <div className="font-sans text-xs tabular-nums">{formatAge(age)}</div>
       <ul className="flex flex-col gap-2 text-xs/5 text-foreground/90">
         {dreams.map((dream) => (
-          <li key={dream.title}>
-            <span aria-hidden="true">- </span>
-            {dream.title}
-          </li>
+          <DreamLine key={dream.title} dream={dream} />
         ))}
       </ul>
     </div>
