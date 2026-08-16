@@ -11,11 +11,22 @@ const AboutPage = () => {
             <Links />
             <div className="mx-auto flex w-full max-w-2xl flex-col gap-16 py-16 px-4 sm:px-0">
                 <header className="flex flex-col gap-5">
-                    <ViewTransition name="profile-avatar" default="none" share="morph">
-                        <Link href="/" className="relative mb-1 size-14 overflow-hidden rounded-[50%] [corner-shape:squircle]">
-                            <Image src="/icon-1.webp" alt="" width={56} height={56} />
-                        </Link>
-                    </ViewTransition>
+                    <div className="relative mb-1 w-fit">
+                        <div className="pointer-events-none absolute bottom-[calc(100%+2px)] left-[-10px] z-10 flex flex-col items-start">
+                            <p className="rounded-2xl bg-foreground px-3 py-1.5 font-sans text-xs leading-none whitespace-nowrap text-background/90 shadow-sm">
+                                I'm both.
+                            </p>
+                            <span
+                                aria-hidden
+                                className="mt-[3px] ml-[18px] size-1.5 rounded-full bg-foreground"
+                            />
+                        </div>
+                        <ViewTransition name="profile-avatar" default="none" share="morph">
+                            <Link href="/" className="relative block size-14 overflow-hidden rounded-[50%] [corner-shape:squircle]">
+                                <Image src="/icon-1.webp" alt="" width={56} height={56} />
+                            </Link>
+                        </ViewTransition>
+                    </div>
                     <StaggerReveal className="flex flex-col gap-5">
                         <StaggerItem>
                             <h1 className="text-4xl">ryu</h1>
@@ -37,7 +48,6 @@ const AboutPage = () => {
 
                 <StaggerReveal className="flex flex-col gap-16" delay={0.15}>
                     <StaggerItem className="flex flex-col gap-6 font-serif text-sm/8">
-                        <p>I'm both.</p>
                         <p>
                             I've loved making things since I was a kid, which is how I became an engineer. I find
                             value in being able to deliver what I've built to countless people with just a computer.
