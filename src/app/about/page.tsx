@@ -11,32 +11,11 @@ const AboutPage = () => {
             <Links />
             <div className="mx-auto flex w-full max-w-2xl flex-col gap-16 py-16 px-4 sm:px-0">
                 <header className="flex flex-col gap-5">
-                    <div className="relative mb-1 w-fit">
-                        <div className="pointer-events-none absolute bottom-full left-[-4px] z-10 mb-px">
-                            <div className="relative">
-                                <p className="rounded-[14px] bg-foreground px-3 py-[7px] font-sans text-xs leading-none whitespace-nowrap text-background">
-                                    I'm both.
-                                </p>
-                                <span
-                                    aria-hidden
-                                    className="absolute -bottom-[7px] left-[10px] size-[18px] rounded-full bg-foreground"
-                                />
-                            </div>
-                            <span
-                                aria-hidden
-                                className="mt-[9px] ml-[24px] block size-2 rounded-full bg-foreground"
-                            />
-                            <span
-                                aria-hidden
-                                className="mt-[2px] ml-[32px] block size-[5px] rounded-full bg-foreground"
-                            />
-                        </div>
-                        <ViewTransition name="profile-avatar" default="none" share="morph">
-                            <Link href="/" className="relative block size-14 overflow-hidden rounded-[50%] [corner-shape:squircle]">
-                                <Image src="/icon-1.webp" alt="" width={56} height={56} />
-                            </Link>
-                        </ViewTransition>
-                    </div>
+                    <ViewTransition name="profile-avatar" default="none" share="morph">
+                        <Link href="/" className="relative mb-1 size-14 overflow-hidden rounded-[50%] [corner-shape:squircle]">
+                            <Image src="/icon-1.webp" alt="" width={56} height={56} />
+                        </Link>
+                    </ViewTransition>
                     <StaggerReveal className="flex flex-col gap-5">
                         <StaggerItem>
                             <h1 className="text-4xl">ryu</h1>
