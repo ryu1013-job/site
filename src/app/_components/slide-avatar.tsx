@@ -27,10 +27,6 @@ export function SlideAvatar({ index, src }: SlideAvatarProps) {
             aria-hidden
             className="mt-[9px] ml-[24px] block size-2 rounded-full bg-foreground"
           />
-          <span
-            aria-hidden
-            className="mt-[2px] ml-[32px] block size-[5px] rounded-full bg-foreground"
-          />
         </div>
         <ViewTransition
           name="profile-avatar"
