@@ -37,6 +37,7 @@ const AboutPage = () => {
 
                 <StaggerReveal className="flex flex-col gap-16" delay={0.15}>
                     <StaggerItem className="flex flex-col gap-6 font-serif text-sm/8">
+                        <p>I'm both.</p>
                         <p>
                             I've loved making things since I was a kid, which is how I became an engineer. I find
                             value in being able to deliver what I've built to countless people with just a computer.
