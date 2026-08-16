@@ -7,6 +7,13 @@ export const LOG_ITEMS = [
     href: 'https://fortee.jp/fec-kansai-2026/proposal/91219d93-833a-4a09-b5c4-34c5cb43a194',
   },
   {
+    date: '2026/08/16',
+    category: 'Blog',
+    title: 'Hello, Solid 2.0 !',
+    subTitle: 'use() も startTransition もない Async React !?',
+    href: 'https://zenn.dev/r1013t/articles/37669abac10840',
+  },
+  {
     date: '2026/06/26',
     category: 'Blog',
     title: 'Trying',
