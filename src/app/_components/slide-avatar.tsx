@@ -13,19 +13,19 @@ export function SlideAvatar({ index, src }: SlideAvatarProps) {
   return (
     <div className="flex justify-center pt-1 sm:justify-end sm:pr-2">
       <div className="relative">
-        <div className="pointer-events-none absolute bottom-full left-[-2px] z-10 mb-px">
+        <div className="pointer-events-none absolute bottom-full left-[-2px] z-10 mb-2">
           <div className="relative">
-            <p className="rounded-[14px] bg-foreground px-3 py-[7px] font-sans text-xs leading-none whitespace-nowrap text-background">
+            <p className="rounded-[14px] bg-[#F4F4F4] px-3 py-2.5 font-sans text-xs leading-none whitespace-nowrap text-foreground">
               I'm both.
             </p>
             <span
               aria-hidden
-              className="absolute -bottom-[7px] left-[10px] size-[18px] rounded-full bg-foreground"
+              className="absolute -bottom-[7px] left-[10px] size-[18px] rounded-full bg-[#F4F4F4]"
             />
           </div>
           <span
             aria-hidden
-            className="mt-[9px] ml-[24px] block size-2 rounded-full bg-foreground"
+            className="mt-[9px] ml-[24px] block size-2 rounded-full bg-[#F4F4F4]"
           />
         </div>
         <ViewTransition
