@@ -13,7 +13,7 @@ const AboutPage = () => {
                 <header className="flex flex-col gap-5">
                     <div className="relative mb-1 w-fit">
                         <div className="pointer-events-none absolute bottom-[calc(100%+2px)] left-[-10px] z-10 flex flex-col items-start">
-                            <p className="rounded-2xl bg-foreground px-3 py-1.5 font-sans text-xs leading-none whitespace-nowrap text-background/90 shadow-sm">
+                            <p className="rounded-full bg-foreground px-3 py-1.5 font-sans text-xs leading-none whitespace-nowrap text-background">
                                 I'm both.
                             </p>
                             <span
