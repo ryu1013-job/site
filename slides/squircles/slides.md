@@ -14,7 +14,7 @@ class: hero
 # どっちが
 # 気持ちいい？
 
-<div class="pair">
+<div class="pair quiz">
   <div class="pair-item">
     <div class="shape round"></div>
     <span>左だと思う人！</span>
@@ -39,17 +39,13 @@ corner-shape: squircle;
 
 # 円弧は、角で曲率が跳ぶ
 
-辺は直線。角は円。
-
-境目で曲率が不連続だから、目が「角」を検知する。
+辺は直線。角は円。境目で曲率が跳ぶ。
 
 ---
 
 # Squircle は、曲率が連続する
 
 同じ大きさでも、角が溶ける。
-
-世の中の気持ちいい角は、だいたいこれ。
 
 ---
 
