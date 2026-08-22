@@ -5,7 +5,7 @@ export const BLOG_ITEMS = [
     isTalk: true,
     title: '気持ちぃ〜角丸 Squircles',
     subTitle: 'フロントエンドカンファレンス関西で登壇',
-    href: 'https://fortee.jp/fec-kansai-2026/proposal/91219d93-833a-4a09-b5c4-34c5cb43a194',
+    href: '/slides/squircles/',
   },
   {
     date: '2026/08/16',
